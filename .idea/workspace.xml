@@ -13,7 +13,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd617b3a-ccdb-41ba-a253-d7b91ff6bdbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/segfault.pcap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dns_only.pcap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_http_request_response.pcap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_https_download.pcap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_ping.pcap" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,19 +47,20 @@
           <entry key="cpp" value="9" />
           <entry key="gitignore" value="1" />
           <entry key="h" value="11" />
-          <entry key="txt" value="4" />
+          <entry key="pcap" value="1" />
+          <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="4" />
           <entry key="ObjectiveC" value="20" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="4500" />
+          <entry key="cpp" value="4501" />
           <entry key="gitignore" value="5" />
           <entry key="h" value="1304" />
           <entry key="txt" value="24" />
@@ -61,7 +69,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="24" />
-          <entry key="ObjectiveC" value="5804" />
+          <entry key="ObjectiveC" value="5805" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -75,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/PCAPFileWriter.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="9" selection-end-column="1" />
+              <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="1" />
               <folding>
                 <element signature="e#73#90#0" expanded="true" />
               </folding>
@@ -87,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/PCAPFileWriter.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="610">
-              <caret line="71" column="36" lean-forward="true" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+              <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
               <folding>
                 <element signature="e#1#38#0" expanded="true" />
               </folding>
@@ -95,23 +103,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+            <state relative-caret-position="195">
+              <caret line="13" column="74" lean-forward="true" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
               <folding>
                 <element signature="e#42#61#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -154,8 +153,8 @@
         <option value="$PROJECT_DIR$/MyLibPCAP/header/PCAPFileReader.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/header/PCAPFileWriter.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileWriter.cpp" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -166,7 +165,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="335" />
+    <option name="x" value="364" />
     <option name="y" value="111" />
     <option name="width" value="1466" />
     <option name="height" value="848" />
@@ -285,29 +284,29 @@
       <workItem from="1539424042984" duration="220000" />
       <workItem from="1539424279373" duration="6745000" />
       <workItem from="1539442419082" duration="8837000" />
-      <workItem from="1539497427715" duration="4291000" />
+      <workItem from="1539497427715" duration="4542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20093000" />
+    <option name="totallyTimeSpent" value="20344000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="335" y="111" width="1466" height="848" extended-state="0" />
+    <frame x="364" y="111" width="1466" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22637518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22637518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33144477" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33144477" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32957748" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -382,7 +381,7 @@
     <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/PCAPFileWriter.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="9" selection-end-column="1" />
+          <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="1" />
           <folding>
             <element signature="e#73#90#0" expanded="true" />
           </folding>
@@ -392,27 +391,33 @@
     <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/PCAPFileWriter.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
-          <caret line="71" column="36" lean-forward="true" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+          <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
           <folding>
             <element signature="e#1#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/result.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/segfault.pcap">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="135">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="74" lean-forward="true" selection-start-line="13" selection-start-column="74" selection-end-line="13" selection-end-column="74" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

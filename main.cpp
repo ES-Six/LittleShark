@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
     //Créer le file writer et le file reader
-    MyLibPCAP::PCAPFileReader test = MyLibPCAP::PCAPFileReader("../test_ping.pcap");
+    MyLibPCAP::PCAPFileReader test = MyLibPCAP::PCAPFileReader("../pcap_test_files/test_ping.pcap");
     MyLibPCAP::PCAPFileWriter test_writer = MyLibPCAP::PCAPFileWriter("../my_own.pcap", 1);
 
     //Informer de l'endianess du fichier lu (la lib le gère automatiquement)
