@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileReader.h
+string
+-
+fstream
+-
+pcap_file_headers.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+packet_wrapper.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/packet_wrapper.h
+
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileWriter.h
+string
+-
+fstream
+-
+pcap_file_headers.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/packet_wrapper.h
+pcap_file_headers.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+cstdint
+-
+sys/time.h
+-
+
+/home/brendan/CLionProjects/my_libpcap/main.cpp
+iostream
+-
+MyLibPCAP/header/PCAPFileReader.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileReader.h
+MyLibPCAP/header/PCAPFileWriter.h
+/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileWriter.h
+
