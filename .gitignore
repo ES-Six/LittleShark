@@ -31,3 +31,10 @@
 *.out
 *.app
 *.elf
+littleshark
+
+# Others
+CMakeFiles/
+.idea/
+.vscode/
+cmake-build-debug/
