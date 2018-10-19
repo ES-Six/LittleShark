@@ -15,5 +15,5 @@ public:
 
 
     C_Packet();
-    ~C_Packet();
+    ~C_Packet() = default;
 };

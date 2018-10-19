@@ -38,7 +38,8 @@ void C_Core::Process()
     }
 
     ssize_t data_size;
-    unsigned char *buffer = (unsigned char *)malloc(65536);
+    // 65535 is the maximum packet size of a TCP packet
+    unsigned char *buffer = new unsigned char[65535];
 	socklen_t sockaddr_size = sizeof(saddr);
 
     while(1){
@@ -52,6 +53,7 @@ void C_Core::Process()
         //TODO: Add anything to do with packet here
 
         if(packet){
+            delete packet;
             packet = nullptr;
         }
     }
