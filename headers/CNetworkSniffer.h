@@ -7,6 +7,7 @@
 #include <sys/socket.h>
 #include <netinet/ip.h>
 #include <arpa/inet.h>
+#include <netinet/if_ether.h>
 
 #include <string>
 

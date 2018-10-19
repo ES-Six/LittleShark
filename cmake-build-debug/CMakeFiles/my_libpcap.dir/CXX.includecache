@@ -19,6 +19,8 @@ netinet/ip.h
 -
 arpa/inet.h
 -
+netinet/if_ether.h
+-
 string
 -
 CPacket.h

@@ -19,6 +19,8 @@ netinet/ip.h
 -
 arpa/inet.h
 -
+netinet/if_ether.h
+-
 string
 -
 CPacket.h
@@ -73,6 +75,8 @@ netinet/ip.h
 -
 arpa/inet.h
 -
+netinet/if_ether.h
+-
 string
 -
 CPacket.h
@@ -113,14 +117,12 @@ sys/socket.h
 -
 net/ethernet.h
 -
+netinet/if_ether.h
+-
 ../headers/CCore.h
 /home/brendan/CLionProjects/little_shark/headers/CCore.h
 
 /home/brendan/CLionProjects/little_shark/srcs/CNetworkSniffer.cpp
 ../headers/CNetworkSniffer.h
 /home/brendan/CLionProjects/little_shark/headers/CNetworkSniffer.h
-
-/home/brendan/CLionProjects/little_shark/srcs/CPacket.cpp
-../headers/CPacket.h
-/home/brendan/CLionProjects/little_shark/headers/CPacket.h
 

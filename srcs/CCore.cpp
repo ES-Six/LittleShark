@@ -10,6 +10,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <net/ethernet.h>
+#include<netinet/if_ether.h>
 
 #include "../headers/CCore.h"
 
@@ -31,7 +32,9 @@ void C_Core::Process()
         return;
     }
 
-    int sock_raw = socket(PF_INET, SOCK_RAW, 1);//TODO: Set the flag to capture all packets, not only ICMP
+    // TODO: Set the flag to capture all packets
+    int sock_raw = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
+    // setsockopt(sock_raw , SOL_SOCKET , SO_BINDTODEVICE , "wlo1" , strlen("wlo1")+ 1 );
     if(sock_raw == -1){
         std::cerr << "Unable to create the socket: " << std::strerror(errno) << std::endl;
         return;

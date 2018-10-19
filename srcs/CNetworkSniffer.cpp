@@ -24,8 +24,16 @@ std::string C_NetworkSniffer::GetPacketProtocol(int type)
             return "ICMP";
         break;
 
+        case 6:
+            return "TCP";
+        break;
+
+        case 17:
+            return "UDP";
+        break;
+
         default:
-            return "Unknow";
+            return std::string("UNKNOWN : ")+std::to_string(type);
         break;
     }
 }
@@ -34,7 +42,8 @@ C_Packet *C_NetworkSniffer::Parse(unsigned char *buffer)
 {
     C_Packet *retn = new C_Packet();
 
-    struct iphdr *iph = (struct iphdr*)buffer;
+    // En mode AF_PACKETS il faut exclure le header ethernet du buffer
+    struct iphdr *iph = (struct iphdr*)(buffer + sizeof(struct ethhdr));
 
     retn->m_protocol = iph->protocol;
     retn->m_length = iph->tot_len;
