@@ -5,8 +5,8 @@
 #pragma once
 
 #include <sys/socket.h>
-#include <arpa/inet.h>
 #include <netinet/ip.h>
+#include <arpa/inet.h>
 
 #include <string>
 

@@ -10,8 +10,8 @@
 class C_Core
 {
     public:
+    struct sockaddr saddr;
     C_NetworkSniffer *m_pNetworkSniffer;
-
 
     C_Core();
     ~C_Core();

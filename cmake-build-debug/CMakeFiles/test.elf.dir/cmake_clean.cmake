@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test.elf.dir/main.cpp.o"
+  "CMakeFiles/test.elf.dir/srcs/CCore.cpp.o"
+  "CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o"
+  "CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o"
   "test.elf.pdb"
   "test.elf"
 )

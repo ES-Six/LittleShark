@@ -48,10 +48,10 @@ RM = /home/brendan/clion-2018.2.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/brendan/CLionProjects/my_libpcap
+CMAKE_SOURCE_DIR = /home/brendan/CLionProjects/little_shark
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/brendan/CLionProjects/my_libpcap/cmake-build-debug
+CMAKE_BINARY_DIR = /home/brendan/CLionProjects/little_shark/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brendan/CLionProjects/my_libpcap/cmake-build-debug/CMakeFiles /home/brendan/CLionProjects/my_libpcap/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles /home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brendan/CLionProjects/my_libpcap/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -247,6 +247,87 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/my_libpcap.dir/build.make CMakeFiles/my_libpcap.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+srcs/CCore.o: srcs/CCore.cpp.o
+
+.PHONY : srcs/CCore.o
+
+# target to build an object file
+srcs/CCore.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CCore.cpp.o
+.PHONY : srcs/CCore.cpp.o
+
+srcs/CCore.i: srcs/CCore.cpp.i
+
+.PHONY : srcs/CCore.i
+
+# target to preprocess a source file
+srcs/CCore.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CCore.cpp.i
+.PHONY : srcs/CCore.cpp.i
+
+srcs/CCore.s: srcs/CCore.cpp.s
+
+.PHONY : srcs/CCore.s
+
+# target to generate assembly for a file
+srcs/CCore.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CCore.cpp.s
+.PHONY : srcs/CCore.cpp.s
+
+srcs/CNetworkSniffer.o: srcs/CNetworkSniffer.cpp.o
+
+.PHONY : srcs/CNetworkSniffer.o
+
+# target to build an object file
+srcs/CNetworkSniffer.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o
+.PHONY : srcs/CNetworkSniffer.cpp.o
+
+srcs/CNetworkSniffer.i: srcs/CNetworkSniffer.cpp.i
+
+.PHONY : srcs/CNetworkSniffer.i
+
+# target to preprocess a source file
+srcs/CNetworkSniffer.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.i
+.PHONY : srcs/CNetworkSniffer.cpp.i
+
+srcs/CNetworkSniffer.s: srcs/CNetworkSniffer.cpp.s
+
+.PHONY : srcs/CNetworkSniffer.s
+
+# target to generate assembly for a file
+srcs/CNetworkSniffer.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.s
+.PHONY : srcs/CNetworkSniffer.cpp.s
+
+srcs/CPacket.o: srcs/CPacket.cpp.o
+
+.PHONY : srcs/CPacket.o
+
+# target to build an object file
+srcs/CPacket.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o
+.PHONY : srcs/CPacket.cpp.o
+
+srcs/CPacket.i: srcs/CPacket.cpp.i
+
+.PHONY : srcs/CPacket.i
+
+# target to preprocess a source file
+srcs/CPacket.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CPacket.cpp.i
+.PHONY : srcs/CPacket.cpp.i
+
+srcs/CPacket.s: srcs/CPacket.cpp.s
+
+.PHONY : srcs/CPacket.s
+
+# target to generate assembly for a file
+srcs/CPacket.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CPacket.cpp.s
+.PHONY : srcs/CPacket.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -269,6 +350,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... srcs/CCore.o"
+	@echo "... srcs/CCore.i"
+	@echo "... srcs/CCore.s"
+	@echo "... srcs/CNetworkSniffer.o"
+	@echo "... srcs/CNetworkSniffer.i"
+	@echo "... srcs/CNetworkSniffer.s"
+	@echo "... srcs/CPacket.o"
+	@echo "... srcs/CPacket.i"
+	@echo "... srcs/CPacket.s"
 .PHONY : help
 
 

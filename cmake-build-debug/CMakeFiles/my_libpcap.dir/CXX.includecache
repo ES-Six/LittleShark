@@ -6,39 +6,67 @@
 
 #IncludeRegexTransform: 
 
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileReader.h
+/home/brendan/CLionProjects/little_shark/./headers/CCore.h
+CNetworkSniffer.h
+/home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
+CPacket.h
+/home/brendan/CLionProjects/little_shark/./headers/CPacket.h
+
+/home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
+sys/socket.h
+-
+netinet/ip.h
+-
+arpa/inet.h
+-
+string
+-
+CPacket.h
+/home/brendan/CLionProjects/little_shark/./headers/CPacket.h
+
+/home/brendan/CLionProjects/little_shark/./headers/CPacket.h
+sys/socket.h
+-
+arpa/inet.h
+-
+netinet/ip.h
+-
+
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
 string
 -
 fstream
 -
 pcap_file_headers.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/pcap_file_headers.h
 packet_wrapper.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/packet_wrapper.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/packet_wrapper.h
 
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileWriter.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileWriter.h
 string
 -
 fstream
 -
 pcap_file_headers.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/pcap_file_headers.h
 
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/packet_wrapper.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/packet_wrapper.h
 pcap_file_headers.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/pcap_file_headers.h
 
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/pcap_file_headers.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/pcap_file_headers.h
 cstdint
 -
 sys/time.h
 -
 
-/home/brendan/CLionProjects/my_libpcap/main.cpp
+/home/brendan/CLionProjects/little_shark/main.cpp
 iostream
 -
 MyLibPCAP/header/PCAPFileReader.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileReader.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
 MyLibPCAP/header/PCAPFileWriter.h
-/home/brendan/CLionProjects/my_libpcap/MyLibPCAP/header/PCAPFileWriter.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileWriter.h
+./headers/CCore.h
+/home/brendan/CLionProjects/little_shark/./headers/CCore.h
 

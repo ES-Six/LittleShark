@@ -4,7 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/brendan/CLionProjects/my_libpcap/main.cpp" "/home/brendan/CLionProjects/my_libpcap/cmake-build-debug/CMakeFiles/test.elf.dir/main.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/main.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/main.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/srcs/CCore.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CCore.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/srcs/CNetworkSniffer.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/srcs/CPacket.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,7 +17,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/brendan/CLionProjects/my_libpcap/cmake-build-debug/CMakeFiles/my_libpcap.dir/DependInfo.cmake"
+  "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/my_libpcap.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

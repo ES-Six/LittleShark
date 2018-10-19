@@ -1,14 +1,14 @@
-//
-// Created by brendan on 13/10/18.
-//
-
 #include <iostream>
 
 #include "MyLibPCAP/header/PCAPFileReader.h"
 #include "MyLibPCAP/header/PCAPFileWriter.h"
+#include "./headers/CCore.h"
 
 int main(int argc, char **argv)
 {
+    // Exemple d'utilisation de mylibpcap : la lib pour lire les fichiers .pcap
+
+    /*
     //Créer le file writer et le file reader
     MyLibPCAP::PCAPFileReader test = MyLibPCAP::PCAPFileReader("../pcap_test_files/test_ping.pcap");
     MyLibPCAP::PCAPFileWriter test_writer = MyLibPCAP::PCAPFileWriter("../my_own.pcap", 1);
@@ -42,6 +42,12 @@ int main(int argc, char **argv)
 
         std::cout << std::endl;
     }
+    */
+
+
+    // Exemple de lancement du core d'analse réseau de little shark
+    auto pCore = new C_Core();
+    pCore->Process();
 
     return 0;
 }

@@ -7,11 +7,11 @@
 class C_Packet
 {
 public:
-    int m_iProtocol;
-    int m_iLength;
-    int m_iTTL;
-    struct in_addr m_sDest;
-    struct in_addr m_sSrc;
+    int m_protocol;
+    int m_length;
+    int m_TTL;
+    struct sockaddr_in m_source;
+    struct sockaddr_in m_destination;
 
 
     C_Packet();
