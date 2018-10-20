@@ -274,6 +274,33 @@ srcs/CCore.cpp.s:
 	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CCore.cpp.s
 .PHONY : srcs/CCore.cpp.s
 
+srcs/CEthenetFrame.o: srcs/CEthenetFrame.cpp.o
+
+.PHONY : srcs/CEthenetFrame.o
+
+# target to build an object file
+srcs/CEthenetFrame.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o
+.PHONY : srcs/CEthenetFrame.cpp.o
+
+srcs/CEthenetFrame.i: srcs/CEthenetFrame.cpp.i
+
+.PHONY : srcs/CEthenetFrame.i
+
+# target to preprocess a source file
+srcs/CEthenetFrame.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.i
+.PHONY : srcs/CEthenetFrame.cpp.i
+
+srcs/CEthenetFrame.s: srcs/CEthenetFrame.cpp.s
+
+.PHONY : srcs/CEthenetFrame.s
+
+# target to generate assembly for a file
+srcs/CEthenetFrame.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.s
+.PHONY : srcs/CEthenetFrame.cpp.s
+
 srcs/CNetworkSniffer.o: srcs/CNetworkSniffer.cpp.o
 
 .PHONY : srcs/CNetworkSniffer.o
@@ -353,6 +380,9 @@ help:
 	@echo "... srcs/CCore.o"
 	@echo "... srcs/CCore.i"
 	@echo "... srcs/CCore.s"
+	@echo "... srcs/CEthenetFrame.o"
+	@echo "... srcs/CEthenetFrame.i"
+	@echo "... srcs/CEthenetFrame.s"
 	@echo "... srcs/CNetworkSniffer.o"
 	@echo "... srcs/CNetworkSniffer.i"
 	@echo "... srcs/CNetworkSniffer.s"

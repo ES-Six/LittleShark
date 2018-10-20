@@ -144,7 +144,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=my_libpcap
+CMAKE_PROJECT_NAME:STATIC=little_shark
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -210,6 +210,12 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
+
+//Value Computed by CMake
+little_shark_BINARY_DIR:STATIC=/home/brendan/CLionProjects/little_shark/cmake-build-debug
+
+//Value Computed by CMake
+little_shark_SOURCE_DIR:STATIC=/home/brendan/CLionProjects/little_shark
 
 //Value Computed by CMake
 my_libpcap_BINARY_DIR:STATIC=/home/brendan/CLionProjects/little_shark/cmake-build-debug

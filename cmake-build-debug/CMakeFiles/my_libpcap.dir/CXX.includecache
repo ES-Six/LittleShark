@@ -9,22 +9,28 @@
 /home/brendan/CLionProjects/little_shark/./headers/CCore.h
 CNetworkSniffer.h
 /home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
+CEthenetFrame.h
+/home/brendan/CLionProjects/little_shark/./headers/CEthenetFrame.h
+
+/home/brendan/CLionProjects/little_shark/./headers/CEthenetFrame.h
+arpa/inet.h
+-
+netinet/if_ether.h
+-
+netinet/ip.h
+-
+netinet/ip6.h
+-
 CPacket.h
 /home/brendan/CLionProjects/little_shark/./headers/CPacket.h
 
 /home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
 sys/socket.h
 -
-netinet/ip.h
--
-arpa/inet.h
--
-netinet/if_ether.h
--
 string
 -
-CPacket.h
-/home/brendan/CLionProjects/little_shark/./headers/CPacket.h
+CEthenetFrame.h
+/home/brendan/CLionProjects/little_shark/./headers/CEthenetFrame.h
 
 /home/brendan/CLionProjects/little_shark/./headers/CPacket.h
 sys/socket.h
@@ -32,6 +38,12 @@ sys/socket.h
 arpa/inet.h
 -
 netinet/ip.h
+-
+netinet/ip_icmp.h
+-
+netinet/udp.h
+-
+netinet/tcp.h
 -
 
 /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h

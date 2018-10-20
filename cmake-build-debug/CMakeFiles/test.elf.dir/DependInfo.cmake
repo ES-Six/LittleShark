@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/brendan/CLionProjects/little_shark/main.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/main.cpp.o"
   "/home/brendan/CLionProjects/little_shark/srcs/CCore.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CCore.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/srcs/CEthenetFrame.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o"
   "/home/brendan/CLionProjects/little_shark/srcs/CNetworkSniffer.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o"
   "/home/brendan/CLionProjects/little_shark/srcs/CPacket.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o"
   )
