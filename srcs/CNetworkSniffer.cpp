@@ -3,6 +3,8 @@
 */
 #include "../headers/CNetworkSniffer.h"
 
+#include <iostream>
+
 C_NetworkSniffer::C_NetworkSniffer()
 {
 }
@@ -17,7 +19,7 @@ std::string C_NetworkSniffer::GetPacketProtocol(int type)
     switch(type)
     {
         case 0:
-            return "IP";
+            return "HOPOPT";
         break;
 
         case 1:
@@ -42,8 +44,22 @@ C_Packet *C_NetworkSniffer::Parse(unsigned char *buffer)
 {
     C_Packet *retn = new C_Packet();
 
-    // En mode AF_PACKETS il faut exclure le header ethernet du buffer
-    struct iphdr *iph = (struct iphdr*)(buffer + sizeof(struct ethhdr));
+    // Récupération du header ETHERNET
+    struct ethhdr *ethernet_frame = (struct ethhdr*)buffer;
+    __be16 ethernet_protocol = htons(ethernet_frame->h_proto);
+    if (ethernet_protocol == ETH_P_ARP) {
+        std::cout << "Ethernet frame with ARP Protocol" << std::endl;
+    } else if (ethernet_protocol == ETH_P_IP) {
+        std::cout << "Ethernet frame with IP protool" << std::endl;
+    } else if (ethernet_protocol == ETH_P_IPV6) {
+        std::cout << "Ethernet frame with IP protool" << std::endl;
+    } else {
+        std::cout << "Unknown OSI level 2 protool : " << std::hex << ethernet_protocol << std::endl;
+    }
+
+    // En mode AF_PACKETS nous avons acces au header ethernet avant le header IP
+    buffer +=  sizeof(struct ethhdr);
+    struct iphdr *iph = (struct iphdr*)(buffer);
 
     retn->m_protocol = iph->protocol;
     retn->m_length = iph->tot_len;
