@@ -81,9 +81,8 @@ void C_Core::Process()
 
     // 65535 is the maximum packet size of a TCP packet
     ssize_t data_size;
-    auto buffer = new unsigned char[65535];
+    auto buffer = new unsigned char[65536];
 	socklen_t sockaddr_size = sizeof(saddr);
-
     while(1){
         data_size = recvfrom(sock_raw, buffer, 65536, 0, &saddr, &sockaddr_size);
         if(data_size < 0){

@@ -1,5 +1,7 @@
 #include "../headers/CPacket.h"
 
+#include <iostream>
+
 void CPacket::parseIPv4Protocol(unsigned char *buffer)
 {
     this->m_pIPHeader = reinterpret_cast<struct iphdr *>(buffer);
@@ -17,9 +19,11 @@ void CPacket::parseIPv4Protocol(unsigned char *buffer)
 
         case 17:
             this->setUDPHeader(reinterpret_cast<struct udphdr *>(buffer));
-            break;
-
-        default:
+            auto parser = new DNSParser();
+            parser->parseData(buffer + sizeof(struct udphdr), ntohs(this->getUDPHeader()->len) - sizeof(struct udphdr));
+            if (parser->isValiddDNSPacket()) {
+                std::cout << "DNS HEADER DETECTED !" << std::endl;
+            }
             break;
     }
 }

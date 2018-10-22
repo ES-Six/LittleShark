@@ -7,6 +7,8 @@
 #include <netinet/udp.h>
 #include <netinet/tcp.h>
 
+#include "DNSParser.h"
+
 class CPacket
 {
 public:

@@ -6,6 +6,7 @@ CMakeFiles/test.elf.dir/main.cpp.o
  /home/brendan/CLionProjects/little_shark/./headers/CEthenetFrame.h
  /home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
  /home/brendan/CLionProjects/little_shark/./headers/CPacket.h
+ /home/brendan/CLionProjects/little_shark/./headers/DNSParser.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileWriter.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/packet_wrapper.h
@@ -16,16 +17,23 @@ CMakeFiles/test.elf.dir/srcs/CCore.cpp.o
  /home/brendan/CLionProjects/little_shark/headers/CEthenetFrame.h
  /home/brendan/CLionProjects/little_shark/headers/CNetworkSniffer.h
  /home/brendan/CLionProjects/little_shark/headers/CPacket.h
+ /home/brendan/CLionProjects/little_shark/headers/DNSParser.h
  /home/brendan/CLionProjects/little_shark/srcs/CCore.cpp
 CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o
  /home/brendan/CLionProjects/little_shark/headers/CEthenetFrame.h
  /home/brendan/CLionProjects/little_shark/headers/CPacket.h
+ /home/brendan/CLionProjects/little_shark/headers/DNSParser.h
  /home/brendan/CLionProjects/little_shark/srcs/CEthenetFrame.cpp
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o
  /home/brendan/CLionProjects/little_shark/headers/CEthenetFrame.h
  /home/brendan/CLionProjects/little_shark/headers/CNetworkSniffer.h
  /home/brendan/CLionProjects/little_shark/headers/CPacket.h
+ /home/brendan/CLionProjects/little_shark/headers/DNSParser.h
  /home/brendan/CLionProjects/little_shark/srcs/CNetworkSniffer.cpp
 CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o
  /home/brendan/CLionProjects/little_shark/headers/CPacket.h
+ /home/brendan/CLionProjects/little_shark/headers/DNSParser.h
  /home/brendan/CLionProjects/little_shark/srcs/CPacket.cpp
+CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.o
+ /home/brendan/CLionProjects/little_shark/headers/DNSParser.h
+ /home/brendan/CLionProjects/little_shark/srcs/DNSParser.cpp

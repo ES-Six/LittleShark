@@ -355,6 +355,33 @@ srcs/CPacket.cpp.s:
 	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/CPacket.cpp.s
 .PHONY : srcs/CPacket.cpp.s
 
+srcs/DNSParser.o: srcs/DNSParser.cpp.o
+
+.PHONY : srcs/DNSParser.o
+
+# target to build an object file
+srcs/DNSParser.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.o
+.PHONY : srcs/DNSParser.cpp.o
+
+srcs/DNSParser.i: srcs/DNSParser.cpp.i
+
+.PHONY : srcs/DNSParser.i
+
+# target to preprocess a source file
+srcs/DNSParser.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.i
+.PHONY : srcs/DNSParser.cpp.i
+
+srcs/DNSParser.s: srcs/DNSParser.cpp.s
+
+.PHONY : srcs/DNSParser.s
+
+# target to generate assembly for a file
+srcs/DNSParser.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.s
+.PHONY : srcs/DNSParser.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -389,6 +416,9 @@ help:
 	@echo "... srcs/CPacket.o"
 	@echo "... srcs/CPacket.i"
 	@echo "... srcs/CPacket.s"
+	@echo "... srcs/DNSParser.o"
+	@echo "... srcs/DNSParser.i"
+	@echo "... srcs/DNSParser.s"
 .PHONY : help
 
 

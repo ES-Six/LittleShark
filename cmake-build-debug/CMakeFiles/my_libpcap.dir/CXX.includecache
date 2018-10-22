@@ -45,6 +45,20 @@ netinet/udp.h
 -
 netinet/tcp.h
 -
+DNSParser.h
+/home/brendan/CLionProjects/little_shark/./headers/DNSParser.h
+
+/home/brendan/CLionProjects/little_shark/./headers/DNSParser.h
+cstdint
+-
+iostream
+-
+string
+-
+arpa/inet.h
+-
+vector
+-
 
 /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
 string

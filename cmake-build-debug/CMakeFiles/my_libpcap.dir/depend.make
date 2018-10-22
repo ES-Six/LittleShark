@@ -18,6 +18,7 @@ CMakeFiles/my_libpcap.dir/main.cpp.o: .././headers/CCore.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: .././headers/CEthenetFrame.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: .././headers/CNetworkSniffer.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: .././headers/CPacket.h
+CMakeFiles/my_libpcap.dir/main.cpp.o: .././headers/DNSParser.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: ../MyLibPCAP/header/PCAPFileReader.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: ../MyLibPCAP/header/PCAPFileWriter.h
 CMakeFiles/my_libpcap.dir/main.cpp.o: ../MyLibPCAP/header/packet_wrapper.h
