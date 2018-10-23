@@ -15,12 +15,12 @@ C_NetworkSniffer::~C_NetworkSniffer()
 
 }
 
-CEthenetFrame *C_NetworkSniffer::parse(unsigned char *buffer)
+CEthenetFrame *C_NetworkSniffer::parse(unsigned char *buffer, ssize_t total_len)
 {
     auto ethernetFrame = new CEthenetFrame();
 
     // Récupération du header ETHERNET
-    ethernetFrame->parseEthernetFrame(buffer);
+    ethernetFrame->parseEthernetFrame(buffer, total_len);
 
     return ethernetFrame;
 }

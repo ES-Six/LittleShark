@@ -13,8 +13,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd617b3a-ccdb-41ba-a253-d7b91ff6bdbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headers/DNSParser.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/srcs/DNSParser.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/headers/httpDetector.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srcs/httpDetector.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
@@ -31,9 +31,15 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/CEthenetFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/CEthenetFrame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/CNetworkSniffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/CNetworkSniffer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headers/CPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/CPacket.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/DNSParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/DNSParser.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/CCore.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/CCore.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/CEthenetFrame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/CEthenetFrame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/CNetworkSniffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/CNetworkSniffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/CPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/CPacket.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/DNSParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/DNSParser.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,29 +101,29 @@
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.17" value="2" />
-          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.18" value="3" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="24" />
-          <entry key="h" value="41" />
+          <entry key="cpp" value="41" />
+          <entry key="h" value="50" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="ObjectiveC" value="65" />
+          <entry key="ObjectiveC" value="91" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="10374" />
-          <entry key="h" value="1646" />
+          <entry key="cpp" value="12714" />
+          <entry key="h" value="2149" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
@@ -125,7 +131,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="79" />
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="12019" />
+          <entry key="ObjectiveC" value="14862" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -137,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/CPacket.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+            <state relative-caret-position="270">
+              <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -147,30 +153,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/headers/CPacket.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding>
-                <element signature="e#14#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+            <state relative-caret-position="3735">
+              <caret line="252" column="21" lean-forward="true" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
               <folding>
                 <element signature="e#42#75#0" expanded="true" />
-                <element signature="e#97#1928#0" />
-                <element signature="e#97#1412#0" />
-                <element signature="e#3034#3245#0" />
-                <element signature="e#2030#2679#0" />
-                <element signature="e#4443#6149#0" />
-                <element signature="e#2801#6701#0" />
               </folding>
             </state>
           </provider>
@@ -179,10 +167,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+            <state relative-caret-position="200">
+              <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="29" selection-end-column="17" />
               <folding>
                 <element signature="e#109#127#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/srcs/httpDetector.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="94" column="79" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+              <folding>
+                <element signature="e#42#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/headers/httpDetector.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+              <folding>
+                <element signature="e#115#132#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -210,6 +222,7 @@
       <find>BUFFSIZ</find>
       <find>BUFSIZ</find>
       <find>readDNSLabel</find>
+      <find>buffer</find>
     </findStrings>
     <replaceStrings>
       <replace>PCAPFileReader</replace>
@@ -233,16 +246,18 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/srcs/CNetworkSniffer.cpp" />
+        <option value="$PROJECT_DIR$/headers/CCore.h" />
         <option value="$PROJECT_DIR$/headers/CNetworkSniffer.h" />
+        <option value="$PROJECT_DIR$/srcs/CNetworkSniffer.cpp" />
         <option value="$PROJECT_DIR$/headers/CEthenetFrame.h" />
         <option value="$PROJECT_DIR$/srcs/CEthenetFrame.cpp" />
-        <option value="$PROJECT_DIR$/headers/CCore.h" />
-        <option value="$PROJECT_DIR$/srcs/CCore.cpp" />
         <option value="$PROJECT_DIR$/headers/CPacket.h" />
+        <option value="$PROJECT_DIR$/srcs/CCore.cpp" />
         <option value="$PROJECT_DIR$/srcs/CPacket.cpp" />
         <option value="$PROJECT_DIR$/headers/DNSParser.h" />
         <option value="$PROJECT_DIR$/srcs/DNSParser.cpp" />
+        <option value="$PROJECT_DIR$/headers/httpDetector.h" />
+        <option value="$PROJECT_DIR$/srcs/httpDetector.cpp" />
       </list>
     </option>
   </component>
@@ -254,7 +269,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="316" />
-    <option name="y" value="119" />
+    <option name="y" value="120" />
     <option name="width" value="1595" />
     <option name="height" value="945" />
   </component>
@@ -281,7 +296,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,6 +317,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -376,17 +391,18 @@
       <workItem from="1540131071515" duration="14897000" />
       <workItem from="1540149791469" duration="5469000" />
       <workItem from="1540236366782" duration="12276000" />
+      <workItem from="1540317633781" duration="10952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75853000" />
+    <option name="totallyTimeSpent" value="86805000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="316" y="119" width="1595" height="945" extended-state="0" />
+    <frame x="316" y="120" width="1595" height="945" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23012282" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23335488" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -488,37 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/CNetworkSniffer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/CEthenetFrame.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="43" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headers/CNetworkSniffer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/CCore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-          <folding>
-            <element signature="e#31#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/CCore.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -526,27 +511,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headers/CEthenetFrame.h">
+    <entry file="file://$PROJECT_DIR$/headers/CNetworkSniffer.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="300">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headers/CPacket.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="270">
+          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
           <folding>
             <element signature="e#14#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/headers/CEthenetFrame.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/CEthenetFrame.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/CNetworkSniffer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/CCore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="83" column="41" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="41" />
+          <folding>
+            <element signature="e#31#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3735">
+          <caret line="252" column="21" lean-forward="true" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+          <folding>
+            <element signature="e#42#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/CPacket.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+        <state relative-caret-position="270">
+          <caret line="62" column="13" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -555,26 +581,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+        <state relative-caret-position="200">
+          <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="29" selection-end-column="17" />
           <folding>
             <element signature="e#109#127#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
+    <entry file="file://$PROJECT_DIR$/headers/httpDetector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+        <state relative-caret-position="215">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
           <folding>
-            <element signature="e#42#75#0" expanded="true" />
-            <element signature="e#97#1928#0" />
-            <element signature="e#97#1412#0" />
-            <element signature="e#3034#3245#0" />
-            <element signature="e#2030#2679#0" />
-            <element signature="e#4443#6149#0" />
-            <element signature="e#2801#6701#0" />
+            <element signature="e#115#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/httpDetector.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="94" column="79" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+          <folding>
+            <element signature="e#42#78#0" expanded="true" />
           </folding>
         </state>
       </provider>

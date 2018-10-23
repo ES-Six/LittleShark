@@ -5,7 +5,7 @@ CEthenetFrame::~CEthenetFrame()
     delete m_pCPacket;
 }
 
-void CEthenetFrame::parseEthernetFrame(unsigned char *buffer) {
+void CEthenetFrame::parseEthernetFrame(unsigned char *buffer, ssize_t total_len) {
     this->m_pBuffer = buffer;
     this->m_pEthernetFrame = reinterpret_cast<struct ethhdr*>(buffer);
 
@@ -16,9 +16,9 @@ void CEthenetFrame::parseEthernetFrame(unsigned char *buffer) {
         this->setARPHeader((struct arphdr*)(buffer));
     } else if (this->isIPv4Protocol()) {
         //Récupération du header IPv4
-        this->setIPv4Header((struct iphdr*)(buffer));
+        this->setIPv4Header(reinterpret_cast<struct iphdr*>(buffer));
         this->m_pCPacket = new CPacket();
-        this->m_pCPacket->parseIPv4Protocol(buffer);
+        this->m_pCPacket->parseIPv4Protocol(buffer, total_len);
     } else if (this->isIPv6Protocol()) {
         //Récupération du header IPv6
         this->setIPv6Header((struct ipv6hdr*)(buffer));

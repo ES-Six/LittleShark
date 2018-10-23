@@ -6,6 +6,14 @@
 
 #include <cstring>
 
+DNSParser::DNSParser() {
+    this->buffer = new unsigned char[65536];
+}
+
+DNSParser::~DNSParser() {
+    delete[] this->buffer;
+}
+
 u_char *DNSParser::readDNSMXLabel(u_char **label, u_char *dest,
                                 size_t dest_size,
                                 const u_char *payload,
@@ -174,7 +182,8 @@ void DNSParser::displayDNSEntry(uint16_t len, uint16_t qtype, u_char *tmp, u_cha
     std::string postLabeled;
 
     /* Get data len */
-    len = ntohs(*(uint16_t *)tmp); tmp += 2;
+    len = ntohs(*(uint16_t *)tmp);
+    tmp += 2;
     if (qtype == 28) qtype = 17; /* for AAAA compatibility */
 
     switch (qtype) {
@@ -229,8 +238,9 @@ void DNSParser::displayDNSEntry(uint16_t len, uint16_t qtype, u_char *tmp, u_cha
     std::cout << dnsQuery << std::endl;
 }
 
-void DNSParser::parseData(unsigned char *buffer, uint16_t max_length) {
+void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
     //L'enfer sur terre
+    memcpy(this->buffer, old_buffer, static_cast<int>(max_length));
     unsigned char *start = buffer;
     unsigned char *end = buffer + max_length;
     unsigned char *cursor = buffer;
@@ -265,11 +275,6 @@ void DNSParser::parseData(unsigned char *buffer, uint16_t max_length) {
         return;
     }
 
-    std::cout << "The response contains : " <<  dnsHeader->qdcount << " questions." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->ancount << " answers." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->nscount << " authoritative Servers." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->arcount << " additional records." << std::endl;
-
     /* Parse the Query section */
     tmp = (u_char *)(start + 12);
     for (i=0;i<dnsh->qdcount;i++) {
@@ -288,6 +293,11 @@ void DNSParser::parseData(unsigned char *buffer, uint16_t max_length) {
             return;
         }
     }
+
+    std::cout << "The response contains : " <<  dnsHeader->qdcount << " questions." << std::endl;
+    std::cout << "The response contains : " << dnsHeader->ancount << " answers." << std::endl;
+    std::cout << "The response contains : " << dnsHeader->nscount << " authoritative Servers." << std::endl;
+    std::cout << "The response contains : " << dnsHeader->arcount << " additional records." << std::endl;
 
     /* Parse the Answer section */
     if (!qtype) {

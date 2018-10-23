@@ -19,5 +19,5 @@ public:
     C_NetworkSniffer();
     ~C_NetworkSniffer();
 
-    CEthenetFrame *parse(unsigned char *buffer);
+    CEthenetFrame *parse(unsigned char *buffer, ssize_t);
 };

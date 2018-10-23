@@ -8,6 +8,7 @@
 #include <netinet/tcp.h>
 
 #include "DNSParser.h"
+#include "httpDetector.h"
 
 class CPacket
 {
@@ -15,7 +16,7 @@ public:
     CPacket() = default;
     ~CPacket() = default;
 
-    void parseIPv4Protocol(unsigned char *);
+    void parseIPv4Protocol(unsigned char *, ssize_t);
 
     struct icmphdr *getICMPHeader() const;
     struct tcphdr *getTCPHeader() const;

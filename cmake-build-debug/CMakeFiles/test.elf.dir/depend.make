@@ -6,6 +6,7 @@ CMakeFiles/test.elf.dir/main.cpp.o: .././headers/CEthenetFrame.h
 CMakeFiles/test.elf.dir/main.cpp.o: .././headers/CNetworkSniffer.h
 CMakeFiles/test.elf.dir/main.cpp.o: .././headers/CPacket.h
 CMakeFiles/test.elf.dir/main.cpp.o: .././headers/DNSParser.h
+CMakeFiles/test.elf.dir/main.cpp.o: .././headers/httpDetector.h
 CMakeFiles/test.elf.dir/main.cpp.o: ../MyLibPCAP/header/PCAPFileReader.h
 CMakeFiles/test.elf.dir/main.cpp.o: ../MyLibPCAP/header/PCAPFileWriter.h
 CMakeFiles/test.elf.dir/main.cpp.o: ../MyLibPCAP/header/packet_wrapper.h
@@ -17,23 +18,30 @@ CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../headers/CEthenetFrame.h
 CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../headers/CNetworkSniffer.h
 CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../headers/CPacket.h
 CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../headers/DNSParser.h
+CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../headers/httpDetector.h
 CMakeFiles/test.elf.dir/srcs/CCore.cpp.o: ../srcs/CCore.cpp
 
 CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o: ../headers/CEthenetFrame.h
 CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o: ../headers/CPacket.h
 CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o: ../headers/DNSParser.h
+CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o: ../headers/httpDetector.h
 CMakeFiles/test.elf.dir/srcs/CEthenetFrame.cpp.o: ../srcs/CEthenetFrame.cpp
 
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../headers/CEthenetFrame.h
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../headers/CNetworkSniffer.h
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../headers/CPacket.h
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../headers/DNSParser.h
+CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../headers/httpDetector.h
 CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o: ../srcs/CNetworkSniffer.cpp
 
 CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o: ../headers/CPacket.h
 CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o: ../headers/DNSParser.h
+CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o: ../headers/httpDetector.h
 CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o: ../srcs/CPacket.cpp
 
 CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.o: ../headers/DNSParser.h
 CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.o: ../srcs/DNSParser.cpp
+
+CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.o: ../headers/httpDetector.h
+CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.o: ../srcs/httpDetector.cpp
 

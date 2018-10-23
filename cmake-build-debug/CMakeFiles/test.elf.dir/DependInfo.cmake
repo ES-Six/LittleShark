@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/brendan/CLionProjects/little_shark/srcs/CNetworkSniffer.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CNetworkSniffer.cpp.o"
   "/home/brendan/CLionProjects/little_shark/srcs/CPacket.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/CPacket.cpp.o"
   "/home/brendan/CLionProjects/little_shark/srcs/DNSParser.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.o"
+  "/home/brendan/CLionProjects/little_shark/srcs/httpDetector.cpp" "/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -80,16 +80,18 @@ void C_Core::Process()
     }
 
     // 65535 is the maximum packet size of a TCP packet
-    ssize_t data_size;
+    ssize_t total_len;
     auto buffer = new unsigned char[65536];
 	socklen_t sockaddr_size = sizeof(saddr);
     while(1){
-        data_size = recvfrom(sock_raw, buffer, 65536, 0, &saddr, &sockaddr_size);
-        if(data_size < 0){
+        memset(buffer, 0, 65536);
+        total_len = recvfrom(sock_raw, buffer, 65536, 0, &saddr, &sockaddr_size);
+        // print_bytes(buffer, total_len);
+        if(total_len < 0){
             std::cerr << "Failed to get packets: " << std::strerror(errno) << std::endl;
             return;
         }
-        CEthenetFrame *frame = this->m_pNetworkSniffer->parse(buffer);
+        CEthenetFrame *frame = this->m_pNetworkSniffer->parse(buffer, total_len);
         this->printEthernetFrameProtocol(frame);
 
         //TODO: Add anything to do with packet here

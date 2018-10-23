@@ -20,6 +20,7 @@ CMakeFiles/my_libpcap.dir/main.cpp.o
  /home/brendan/CLionProjects/little_shark/./headers/CNetworkSniffer.h
  /home/brendan/CLionProjects/little_shark/./headers/CPacket.h
  /home/brendan/CLionProjects/little_shark/./headers/DNSParser.h
+ /home/brendan/CLionProjects/little_shark/./headers/httpDetector.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileWriter.h
  /home/brendan/CLionProjects/little_shark/MyLibPCAP/header/packet_wrapper.h

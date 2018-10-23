@@ -12,7 +12,7 @@ public:
     CEthenetFrame() = default;
     ~CEthenetFrame();
 
-    void parseEthernetFrame(unsigned char *);
+    void parseEthernetFrame(unsigned char *, ssize_t);
 
     bool isIPv4Protocol() const;
     bool isIPv6Protocol() const;

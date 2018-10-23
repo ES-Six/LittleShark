@@ -26,12 +26,13 @@ struct dnshdr {
 
 class DNSParser {
 public:
-    DNSParser() = default;
-    ~DNSParser() = default;
+    DNSParser();
+    ~DNSParser();
 
     void parseData(unsigned char *, uint16_t);
     bool isValiddDNSPacket() const;
 private:
+    unsigned char *buffer = nullptr;
     u_char *readDNSMXLabel(u_char **, u_char *, size_t, const u_char *, const u_char *, bool &);
     u_char *readDNSLabel(u_char **, u_char *, size_t, const u_char *, const u_char *);
     void displayDNSEntry(uint16_t, uint16_t, u_char *, u_char *, u_char *, u_char *);

@@ -382,6 +382,33 @@ srcs/DNSParser.cpp.s:
 	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.s
 .PHONY : srcs/DNSParser.cpp.s
 
+srcs/httpDetector.o: srcs/httpDetector.cpp.o
+
+.PHONY : srcs/httpDetector.o
+
+# target to build an object file
+srcs/httpDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.o
+.PHONY : srcs/httpDetector.cpp.o
+
+srcs/httpDetector.i: srcs/httpDetector.cpp.i
+
+.PHONY : srcs/httpDetector.i
+
+# target to preprocess a source file
+srcs/httpDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.i
+.PHONY : srcs/httpDetector.cpp.i
+
+srcs/httpDetector.s: srcs/httpDetector.cpp.s
+
+.PHONY : srcs/httpDetector.s
+
+# target to generate assembly for a file
+srcs/httpDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/httpDetector.cpp.s
+.PHONY : srcs/httpDetector.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -419,6 +446,9 @@ help:
 	@echo "... srcs/DNSParser.o"
 	@echo "... srcs/DNSParser.i"
 	@echo "... srcs/DNSParser.s"
+	@echo "... srcs/httpDetector.o"
+	@echo "... srcs/httpDetector.i"
+	@echo "... srcs/httpDetector.s"
 .PHONY : help
 
 
