@@ -6,13 +6,20 @@
 
 #include <iostream>
 
-C_NetworkSniffer::C_NetworkSniffer()
+std::string C_NetworkSniffer::bufferToStringPrettyfier(const void *object, ssize_t max_len)
 {
-}
+    std::string packet;
+    const char * bytes = reinterpret_cast<const char *>(object);
+    for(size_t i = 0; i < max_len; i ++)
+    {
+        if (bytes[i] >= 33 && bytes[i] <= 126) {
+            packet += bytes[i];
+        } else {
+            packet += '.';
+        }
+    }
 
-C_NetworkSniffer::~C_NetworkSniffer()
-{
-
+    return packet;
 }
 
 CEthenetFrame *C_NetworkSniffer::parse(unsigned char *buffer, ssize_t total_len)

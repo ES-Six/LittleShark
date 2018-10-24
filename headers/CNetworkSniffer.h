@@ -16,8 +16,10 @@
 class C_NetworkSniffer
 {
 public:
-    C_NetworkSniffer();
-    ~C_NetworkSniffer();
+    C_NetworkSniffer() = default;
+    ~C_NetworkSniffer() = default;
 
     CEthenetFrame *parse(unsigned char *buffer, ssize_t);
+
+    static std::string bufferToStringPrettyfier(const void *object, ssize_t max_len);
 };

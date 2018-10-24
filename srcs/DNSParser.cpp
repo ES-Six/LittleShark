@@ -165,7 +165,7 @@ std::string DNSParser::dnsQueryTypeToStr(uint16_t qtype) {
             return std::string("MX");
         case 16: /* TXT (1 byte text length / text) */
             return std::string("TXT");
-        case 17: /* AAAA */
+        case 28: /* AAAA */
             return std::string("AAAA");
         default:
             return std::string("UNKNOWN");
@@ -184,7 +184,6 @@ void DNSParser::displayDNSEntry(uint16_t len, uint16_t qtype, u_char *tmp, u_cha
     /* Get data len */
     len = ntohs(*(uint16_t *)tmp);
     tmp += 2;
-    if (qtype == 28) qtype = 17; /* for AAAA compatibility */
 
     switch (qtype) {
         case 1:
@@ -222,20 +221,15 @@ void DNSParser::displayDNSEntry(uint16_t len, uint16_t qtype, u_char *tmp, u_cha
             } else *dbuf = '\0';
             data = dbuf;
             break;
-        case 17:
+        case 28:
             data = inet_ntop(AF_INET6, tmp, dbuf, 8192);
             break;
         default:
             *dbuf = '\0';
             data = dbuf;
     }
-    dnsQuery += dnsQueryTypeToStr(qtype);
-    dnsQuery += ": ";
-    dnsQuery += reinterpret_cast<char *>(label);
-    dnsQuery += " => ";
-    dnsQuery += data;
 
-    std::cout << dnsQuery << std::endl;
+    this->m_vDNSRecords.emplace_back(data);
 }
 
 void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
@@ -247,7 +241,6 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
     u_char *label = nullptr;
     u_char buf[8192];
     char dbuf[8192];
-    struct dnshdr *dnsh = nullptr;
     u_char *tmp = nullptr;
     const char *data = nullptr;
     uint16_t len = 0;
@@ -259,29 +252,38 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
         return;
     }
 
-    auto dnsHeader = reinterpret_cast<struct dnshdr *>(buffer);
-
     /* fill struct with values in correct endianess */
-    dnsh = (struct dnshdr *)(start);
-    dnsh->id      = ntohs(dnsh->id);
-    dnsh->flags   = ntohs(dnsh->flags);
-    dnsh->qdcount = ntohs(dnsh->qdcount);
-    dnsh->ancount = ntohs(dnsh->ancount);
-    dnsh->nscount = ntohs(dnsh->nscount);
-    dnsh->arcount = ntohs(dnsh->arcount);
+    this->dnsHeader = reinterpret_cast<struct dnshdr *>(start);
+    this->dnsHeader->id      = ntohs(this->dnsHeader->id);
+    this->dnsHeader->flags   = ntohs(this->dnsHeader->flags);
+    this->dnsHeader->qdcount = ntohs(this->dnsHeader->qdcount);
+    this->dnsHeader->ancount = ntohs(this->dnsHeader->ancount);
+    this->dnsHeader->nscount = ntohs(this->dnsHeader->nscount);
+    this->dnsHeader->arcount = ntohs(this->dnsHeader->arcount);
 
-    /* Disregard malformed packets */
-    if (!dnsh->ancount || !dnsh->qdcount) {
+    /* Skip every empty / incorrect packets */
+    if (!dnsHeader->qdcount) {
         return;
     }
 
+    this->queryCount = dnsHeader->qdcount;
+    this->answerCount = dnsHeader->ancount;
+
     /* Parse the Query section */
     tmp = (u_char *)(start + 12);
-    for (i=0;i<dnsh->qdcount;i++) {
+    for (i=0;i<dnsHeader->qdcount;i++) {
         if (!qtype) {
             label = readDNSLabel(&tmp, buf, 8192, start, end);
             tmp++;
             qtype = ntohs(*(uint16_t *)tmp);
+            if ((dnsHeader->flags & 0x8000) != 0x8000) {
+                this->queryType = qtype;
+                this->domainLabel = reinterpret_cast<const char *>(label);
+                this->isQuery = true;
+                this->queryType = qtype;
+                this->isValidDNSHeader = true;
+                return;
+            }
         } else {
             if (*tmp & 0xc0) tmp += 2;
             else tmp = skipRDATA(tmp);
@@ -294,16 +296,14 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
         }
     }
 
-    std::cout << "The response contains : " <<  dnsHeader->qdcount << " questions." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->ancount << " answers." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->nscount << " authoritative Servers." << std::endl;
-    std::cout << "The response contains : " << dnsHeader->arcount << " additional records." << std::endl;
+    this->queryType = qtype;
+    this->domainLabel = reinterpret_cast<const char *>(label);
 
     /* Parse the Answer section */
     if (!qtype) {
         return;
     }
-    for (i=0;i<dnsh->ancount;i++) {
+    for (i = 0; i < dnsHeader->ancount; i ++) {
         tmp = skipRDATA(tmp);
         if (tmp + 10 > end) {
             return;
@@ -323,9 +323,38 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
     }
 
     // Indicate buffer contain valid DNS headers
+    this->isAnswer = true;
     this->isValidDNSHeader = true;
 }
 
 bool DNSParser::isValiddDNSPacket() const {
     return this->isValidDNSHeader;
+}
+
+bool DNSParser::isDNSQuery() const {
+    return this->isQuery;
+}
+
+bool DNSParser::isDNSAnswer() const {
+    return this->isAnswer;
+}
+
+const std::string &DNSParser::getDomainName() const {
+    return this->domainLabel;
+}
+
+uint16_t DNSParser::getQueryType() const {
+    return this->queryType;
+}
+
+uint16_t DNSParser::getQueryCount() const {
+    return this->queryCount;
+}
+
+uint16_t DNSParser::getAnswerCount() const {
+    return this->answerCount;
+}
+
+const std::vector<std::string> &DNSParser::getRecords() const {
+    return this->m_vDNSRecords;
 }

@@ -24,46 +24,95 @@ C_Core::~C_Core()
     delete m_pNetworkSniffer;
 }
 
-void C_Core::printEthernetFrameProtocol(CEthenetFrame *frame) {
-    std::cout << "Received ethernet frame containing protocol";
+void C_Core::printEthernetFrameProtocol(CEthenetFrame *frame, ssize_t total_len) {
+    // std::cout << std::endl << "Received following ethernet frame :" << std::endl;
+    // std::cout << C_NetworkSniffer::bufferToStringPrettyfier(frame->getEthernetFrame(), total_len) << std::endl << std::endl;;
     if (frame->isARPProtocol()) {
-        std::cout << " ARP." << std::endl;
+        std::cout << "Buffer contain ARP DATAS." << std::endl;
     } else if (frame->isIPv4Protocol()) {
-        std::cout << " IP v4 ";
+        std::cout << "Buffer contain IP v4 header";
         this->printIPv4FrameProtocol(frame);
     } else if (frame->isIPv6Protocol()) {
-        std::cout << " IP v6." << std::endl;
+        std::cout << "Buffer contain IP v6 header." << std::endl;
     } else
-        std::cout << " unknown." << std::endl;
+        std::cout << "Buffer contain unknown datas." << std::endl;
 }
 
 void C_Core::printIPv4FrameProtocol(CEthenetFrame *frame)
 {
-    std::cout << "and containing ";
-
     if (frame->getCPacket() != nullptr && frame->getCPacket()->isICMPv4Protocol()) {
-        std::cout << " an ICMPv4 packet." << std::endl;
+        std::cout << " and contain an ICMPv4 packet." << std::endl;
     } else if (frame->getCPacket() != nullptr && frame->getCPacket()->isTCPProtocol()) {
-        std::cout << " a TCP packet." << std::endl;
+        std::cout << " and contain a TCP packet." << std::endl;
         this->printTCPProtocol(frame->getCPacket());
     } else if (frame->getCPacket() != nullptr && frame->getCPacket()->isUDPProtocol()) {
-        std::cout << " an UDP packet." << std::endl;
+        std::cout << " and contain an UDP packet." << std::endl;
         this->printUDPProtocol(frame->getCPacket());
     } else if (frame->getCPacket() != nullptr) {
-        std::cout << "an unknown packet." << std::endl;
+        std::cout << " and contain unknown datas." << std::endl;
     } else {
         std::cout << "nothing at all." << std::endl;
     }
 }
 
-void C_Core::printTCPProtocol(CPacket *frame)
+void C_Core::printTCPProtocol(CPacket *cpacket)
 {
-
+    if (cpacket->getHTTPDetector().isValiddHTTPPacket()) {
+        if (cpacket->getHTTPDetector().isHTTPRequest()) {
+            std::cout << "The packet contain an HTTP Request Header :" << std::endl;
+            std::cout << "Protocol : " << cpacket->getHTTPDetector().getProtocolVersion() << std::endl;
+            std::cout << "Method : " << cpacket->getHTTPDetector().getMethod() << std::endl;
+            std::cout << "Url : " << cpacket->getHTTPDetector().getUrl() << std::endl;
+        } else if (cpacket->getHTTPDetector().isHTTPResponse()) {
+            std::cout << "The packet contain an HTTP Response Header :" << std::endl;
+            std::cout << "Protocol : " << cpacket->getHTTPDetector().getProtocolVersion() << std::endl;
+            std::cout << "Response code : " << cpacket->getHTTPDetector().getReturnCode() << std::endl;
+        }
+    } else if (cpacket->getDNSParser().isValiddDNSPacket()) {
+        if (cpacket->getDNSParser().isDNSQuery()) {
+            std::cout << "The packet contain a DNS QUERY Header :" << std::endl;
+            std::cout << "Domain: " << cpacket->getDNSParser().getDomainName() << std::endl;
+            std::cout << "Type: " << DNSParser::dnsQueryTypeToStr(cpacket->getDNSParser().getQueryType()) << std::endl;
+        } else if (cpacket->getDNSParser().isDNSAnswer()) {
+            std::cout << "The packet contain a DNS ANSWER Header :" << std::endl;
+            if (cpacket->getDNSParser().getRecords().empty()) {
+                std::cout << "NO RECORDS TO DISPLAY" << std::endl;
+            }
+            for (const std::string &record : cpacket->getDNSParser().getRecords()) {
+                std::cout << DNSParser::dnsQueryTypeToStr(cpacket->getDNSParser().getQueryType())  << " " << cpacket->getDNSParser().getDomainName() << " " << record << std::endl;
+            }
+        }
+    }
 }
 
-void C_Core::printUDPProtocol(CPacket *frame)
+void C_Core::printUDPProtocol(CPacket *cpacket)
 {
-
+    if (cpacket->getDNSParser().isValiddDNSPacket()) {
+        if (cpacket->getDNSParser().isDNSQuery()) {
+            std::cout << "The packet contain a DNS QUERY Header :" << std::endl;
+            std::cout << "Domain: " << cpacket->getDNSParser().getDomainName() << std::endl;
+            std::cout << "Type: " << DNSParser::dnsQueryTypeToStr(cpacket->getDNSParser().getQueryType()) << std::endl;
+        } else if (cpacket->getDNSParser().isDNSAnswer()) {
+            std::cout << "The packet contain a DNS ANSWER Header :" << std::endl;
+            if (cpacket->getDNSParser().getRecords().empty()) {
+                std::cout << "NO RECORDS TO DISPLAY" << std::endl;
+            }
+            for (const std::string &record : cpacket->getDNSParser().getRecords()) {
+                std::cout << DNSParser::dnsQueryTypeToStr(cpacket->getDNSParser().getQueryType())  << " " << cpacket->getDNSParser().getDomainName() << " " << record << std::endl;
+            }
+        }
+    } else if (cpacket->getHTTPDetector().isValiddHTTPPacket()) {
+        if (cpacket->getHTTPDetector().isHTTPRequest()) {
+            std::cout << "The packet contain an HTTP Request Header :" << std::endl;
+            std::cout << "Protocol : " << cpacket->getHTTPDetector().getProtocolVersion() << std::endl;
+            std::cout << "Method : " << cpacket->getHTTPDetector().getMethod() << std::endl;
+            std::cout << "Url : " << cpacket->getHTTPDetector().getUrl() << std::endl;
+        } else if (cpacket->getHTTPDetector().isHTTPResponse()) {
+            std::cout << "The packet contain an HTTP Response Header :" << std::endl;
+            std::cout << "Protocol : " << cpacket->getHTTPDetector().getProtocolVersion() << std::endl;
+            std::cout << "Response code : " << cpacket->getHTTPDetector().getReturnCode() << std::endl;
+        }
+    }
 }
 
 void C_Core::Process()
@@ -92,7 +141,7 @@ void C_Core::Process()
             return;
         }
         CEthenetFrame *frame = this->m_pNetworkSniffer->parse(buffer, total_len);
-        this->printEthernetFrameProtocol(frame);
+        this->printEthernetFrameProtocol(frame, total_len);
 
         //TODO: Add anything to do with packet here
         delete frame;

@@ -21,6 +21,8 @@ public:
     struct icmphdr *getICMPHeader() const;
     struct tcphdr *getTCPHeader() const;
     struct udphdr *getUDPHeader() const;
+    const DNSParser &getDNSParser() const;
+    const httpDetector &getHTTPDetector() const;
 
     void setICMPHeader(struct icmphdr *);
     void setTCPHeader(struct tcphdr *);
@@ -30,6 +32,8 @@ public:
     bool isTCPProtocol() const;
     bool isUDPProtocol() const;
 private:
+    DNSParser dnsParser;
+    httpDetector detectorHTTP;
     struct iphdr *m_pIPHeader = nullptr;
     struct icmphdr *m_pICMPHeader = nullptr;
     struct tcphdr *m_pTCPHeader = nullptr;

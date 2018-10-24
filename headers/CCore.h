@@ -15,10 +15,10 @@ public:
     ~C_Core();
 
     void Process();
-    void printEthernetFrameProtocol(CEthenetFrame *frame);
-    void printIPv4FrameProtocol(CEthenetFrame *frame);
-    void printTCPProtocol(CPacket *frame);
-    void printUDPProtocol(CPacket *frame);
+    void printEthernetFrameProtocol(CEthenetFrame *, ssize_t);
+    void printIPv4FrameProtocol(CEthenetFrame *);
+    void printTCPProtocol(CPacket *);
+    void printUDPProtocol(CPacket *);
 
 private:
     struct sockaddr saddr;
