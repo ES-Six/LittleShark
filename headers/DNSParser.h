@@ -49,6 +49,7 @@ private:
     u_char *readDNSLabel(u_char **, u_char *, size_t, const u_char *, const u_char *);
     void displayDNSEntry(uint16_t, uint16_t, u_char *, u_char *, u_char *, u_char *);
     unsigned char *skipRDATA(unsigned char *);
+    bool isLabelValid(const u_char *label);
 
     // Fonctionalités externalisés avec des getters
     bool isValidDNSHeader = false;

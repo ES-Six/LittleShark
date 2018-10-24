@@ -232,6 +232,24 @@ void DNSParser::displayDNSEntry(uint16_t len, uint16_t qtype, u_char *tmp, u_cha
     this->m_vDNSRecords.emplace_back(data);
 }
 
+bool DNSParser::isLabelValid(const u_char *label) {
+    int label_len = 0;
+    const std::string allowed_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.";
+    while (*label != 0 && label_len < 63) {
+        if (allowed_chars.find(*label) == std::string::npos) {
+            return false;
+        }
+        label ++;
+        label_len ++;
+    }
+    if (label_len == 0)
+        return false;
+    else if (label_len > 63)
+        return false;
+
+    return true;
+}
+
 void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
     //L'enfer sur terre
     memcpy(this->buffer, old_buffer, static_cast<int>(max_length));
@@ -277,10 +295,12 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
             tmp++;
             qtype = ntohs(*(uint16_t *)tmp);
             if ((dnsHeader->flags & 0x8000) != 0x8000) {
-                this->queryType = qtype;
                 this->domainLabel = reinterpret_cast<const char *>(label);
-                this->isQuery = true;
+                if (!this->isLabelValid(reinterpret_cast<const u_char *>(label))) {
+                    return;
+                }
                 this->queryType = qtype;
+                this->isQuery = true;
                 this->isValidDNSHeader = true;
                 return;
             }
@@ -320,6 +340,10 @@ void DNSParser::parseData(unsigned char * old_buffer, uint16_t max_length) {
         if (tmp > end) {
             return;
         }
+    }
+
+    if (!this->isLabelValid(reinterpret_cast<const u_char *>(this->domainLabel.c_str()))) {
+        return;
     }
 
     // Indicate buffer contain valid DNS headers
