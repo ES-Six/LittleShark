@@ -382,6 +382,33 @@ srcs/DNSParser.cpp.s:
 	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/DNSParser.cpp.s
 .PHONY : srcs/DNSParser.cpp.s
 
+srcs/PacketGenerator.o: srcs/PacketGenerator.cpp.o
+
+.PHONY : srcs/PacketGenerator.o
+
+# target to build an object file
+srcs/PacketGenerator.cpp.o:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/PacketGenerator.cpp.o
+.PHONY : srcs/PacketGenerator.cpp.o
+
+srcs/PacketGenerator.i: srcs/PacketGenerator.cpp.i
+
+.PHONY : srcs/PacketGenerator.i
+
+# target to preprocess a source file
+srcs/PacketGenerator.cpp.i:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/PacketGenerator.cpp.i
+.PHONY : srcs/PacketGenerator.cpp.i
+
+srcs/PacketGenerator.s: srcs/PacketGenerator.cpp.s
+
+.PHONY : srcs/PacketGenerator.s
+
+# target to generate assembly for a file
+srcs/PacketGenerator.cpp.s:
+	$(MAKE) -f CMakeFiles/test.elf.dir/build.make CMakeFiles/test.elf.dir/srcs/PacketGenerator.cpp.s
+.PHONY : srcs/PacketGenerator.cpp.s
+
 srcs/httpDetector.o: srcs/httpDetector.cpp.o
 
 .PHONY : srcs/httpDetector.o
@@ -446,6 +473,9 @@ help:
 	@echo "... srcs/DNSParser.o"
 	@echo "... srcs/DNSParser.i"
 	@echo "... srcs/DNSParser.s"
+	@echo "... srcs/PacketGenerator.o"
+	@echo "... srcs/PacketGenerator.i"
+	@echo "... srcs/PacketGenerator.s"
 	@echo "... srcs/httpDetector.o"
 	@echo "... srcs/httpDetector.i"
 	@echo "... srcs/httpDetector.s"

@@ -13,10 +13,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd617b3a-ccdb-41ba-a253-d7b91ff6bdbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/headers/PacketGenerator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srcs/PacketGenerator.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/test.elf.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -88,21 +96,21 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="69" />
-          <entry key="h" value="66" />
+          <entry key="cpp" value="71" />
+          <entry key="h" value="72" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="ObjectiveC" value="135" />
+          <entry key="ObjectiveC" value="143" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="15881" />
-          <entry key="h" value="2825" />
+          <entry key="cpp" value="16262" />
+          <entry key="h" value="3124" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
@@ -110,7 +118,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="79" />
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="18705" />
+          <entry key="ObjectiveC" value="19385" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -119,11 +127,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="54" selection-end-column="21" />
+            <state relative-caret-position="262">
+              <caret line="54" column="117" selection-start-line="54" selection-start-column="117" selection-end-line="54" selection-end-column="117" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/srcs/PacketGenerator.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="e#42#81#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/headers/PacketGenerator.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#121#150#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,6 +230,8 @@
         <option value="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" />
         <option value="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" />
+        <option value="$PROJECT_DIR$/headers/PacketGenerator.h" />
+        <option value="$PROJECT_DIR$/srcs/PacketGenerator.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
@@ -246,23 +283,6 @@
               <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
               <item name="little_shark" type="462c0819:PsiDirectoryNode" />
               <item name="headers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
-              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
-              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
-              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
-              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
-              <item name="header" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
-              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
-              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
@@ -348,18 +368,18 @@
       <workItem from="1540236366782" duration="12276000" />
       <workItem from="1540317633781" duration="11145000" />
       <workItem from="1540411057803" duration="11444000" />
-      <workItem from="1540442749465" duration="627000" />
+      <workItem from="1540442749465" duration="2111000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99069000" />
+    <option name="totallyTimeSpent" value="100553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="101" width="1595" height="917" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.239819" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.239819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -370,7 +390,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.29935485" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.29935485" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -426,30 +446,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headers/CEthenetFrame.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <element signature="e#75#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headers/CPacket.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headers/CNetworkSniffer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="75" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/CCore.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -468,6 +464,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="e#115#132#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -475,6 +474,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -489,6 +491,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="136" column="86" selection-start-line="136" selection-start-column="86" selection-end-line="136" selection-end-column="106" />
+          <folding>
+            <element signature="e#42#78#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -496,13 +501,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding>
+            <element signature="e#42#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -544,10 +545,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/CEthenetFrame.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/CNetworkSniffer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" column="75" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/CPacket.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/PacketGenerator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#121#150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="54" selection-end-column="21" />
+        <state relative-caret-position="262">
+          <caret line="54" column="117" selection-start-line="54" selection-start-column="117" selection-end-line="54" selection-end-column="117" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/PacketGenerator.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#42#81#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

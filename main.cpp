@@ -2,7 +2,8 @@
 
 #include "MyLibPCAP/header/PCAPFileReader.h"
 #include "MyLibPCAP/header/PCAPFileWriter.h"
-#include "./headers/CCore.h"
+#include "headers/CCore.h"
+#include "headers/PacketGenerator.h"
 
 int main(int argc, char **argv)
 {
@@ -48,6 +49,11 @@ int main(int argc, char **argv)
     }
     */
 
+
+    //Exemple de generation de packets
+    PacketGenerator generator;
+    unsigned char *packet = generator.createPacket(nullptr, 0, PacketGenerator::WITH_IPV6 | PacketGenerator::WITH_TCP);
+    return 0;
 
     // Exemple de lancement du core d'analse réseau de little shark
 
