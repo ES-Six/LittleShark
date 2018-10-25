@@ -7,8 +7,8 @@
 
 int main(int argc, char **argv)
 {
-    /*
     // Exemple d'utilisation de mylibpcap : la lib pour lire les fichiers .pcap
+    /*
     //Créer le file writer et le file reader
     MyLibPCAP::PCAPFileReader test = MyLibPCAP::PCAPFileReader("../pcap_test_files/test_ping.pcap");
     MyLibPCAP::PCAPFileWriter test_writer = MyLibPCAP::PCAPFileWriter("../my_own.pcap", 1);
@@ -51,12 +51,13 @@ int main(int argc, char **argv)
 
 
     //Exemple de generation de packets
+    /*
     PacketGenerator generator;
     unsigned char *packet = generator.createPacket(nullptr, 0, PacketGenerator::WITH_IPV6 | PacketGenerator::WITH_TCP);
     return 0;
+    */
 
     // Exemple de lancement du core d'analse réseau de little shark
-
     auto pCore = new C_Core();
     pCore->Process();
 
