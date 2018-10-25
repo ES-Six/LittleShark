@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="little_shark" targetName="test.elf" />
       <config projectName="little_shark" targetName="my_libpcap" />
+      <config projectName="little_shark" targetName="test.elf" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -13,8 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd617b3a-ccdb-41ba-a253-d7b91ff6bdbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/headers/DNSParser.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/DNSParser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/DNSParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/DNSParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,32 +76,33 @@
     <session id="1333819797">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="3" />
           <entry key="project.open.time.18" value="3" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="64" />
-          <entry key="h" value="62" />
+          <entry key="cpp" value="69" />
+          <entry key="h" value="66" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="ObjectiveC" value="126" />
+          <entry key="ObjectiveC" value="135" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="15755" />
-          <entry key="h" value="2798" />
+          <entry key="cpp" value="15881" />
+          <entry key="h" value="2825" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
@@ -106,7 +110,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="79" />
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="18552" />
+          <entry key="ObjectiveC" value="18705" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -114,27 +118,12 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
-              <folding>
-                <element signature="e#42#75#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
-              <folding>
-                <element signature="e#109#127#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="54" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -186,12 +175,10 @@
         <option value="$PROJECT_DIR$/packet_wrapper.cpp" />
         <option value="$PROJECT_DIR$/pcap_file_headers.h" />
         <option value="$PROJECT_DIR$/my_libpcap.cpp" />
-        <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" />
         <option value="$PROJECT_DIR$/MyLibPCAP/header/PCAPFileReader.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/header/PCAPFileWriter.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileWriter.cpp" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/headers/CEthenetFrame.h" />
         <option value="$PROJECT_DIR$/srcs/CEthenetFrame.cpp" />
@@ -205,6 +192,10 @@
         <option value="$PROJECT_DIR$/srcs/CCore.cpp" />
         <option value="$PROJECT_DIR$/headers/DNSParser.h" />
         <option value="$PROJECT_DIR$/srcs/DNSParser.cpp" />
+        <option value="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" />
+        <option value="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" />
+        <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -215,8 +206,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="230" />
-    <option name="y" value="111" />
+    <option name="x" value="314" />
+    <option name="y" value="101" />
     <option name="width" value="1595" />
     <option name="height" value="917" />
   </component>
@@ -255,6 +246,23 @@
               <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
               <item name="little_shark" type="462c0819:PsiDirectoryNode" />
               <item name="headers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
+              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
+              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
+              <item name="little_shark" type="462c0819:PsiDirectoryNode" />
+              <item name="MyLibPCAP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="little_shark" type="b2602c69:ProjectViewProjectNode" />
@@ -339,18 +347,19 @@
       <workItem from="1540149791469" duration="5469000" />
       <workItem from="1540236366782" duration="12276000" />
       <workItem from="1540317633781" duration="11145000" />
-      <workItem from="1540411057803" duration="11362000" />
+      <workItem from="1540411057803" duration="11444000" />
+      <workItem from="1540442749465" duration="627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98360000" />
+    <option name="totallyTimeSpent" value="99069000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="230" y="111" width="1595" height="917" extended-state="0" />
+    <frame x="314" y="101" width="1595" height="917" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23658694" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.239819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,7 +370,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.29935485" />
+      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.29935485" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -379,13 +388,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="28" column="52" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result.txt" />
     <entry file="file://$PROJECT_DIR$/segfault.pcap" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -403,24 +405,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/little_shark/main.cpp" />
-    <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-910">
-          <caret line="7" column="65" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -431,24 +419,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/PCAPFileReader.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/PCAPFileWriter.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -466,9 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#14#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -497,9 +468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="25" selection-end-column="45" />
-          <folding>
-            <element signature="e#115#132#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -507,9 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -520,23 +485,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/CCore.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-          <folding>
-            <element signature="e#31#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/httpDetector.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="136" column="86" selection-start-line="136" selection-start-column="86" selection-end-line="136" selection-end-column="106" />
-          <folding>
-            <element signature="e#42#78#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="233" lean-forward="true" selection-start-line="233" selection-end-line="233" />
         </state>
       </provider>
     </entry>
@@ -544,19 +503,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/CCore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="142" column="43" selection-start-line="142" selection-start-column="43" selection-end-line="142" selection-end-column="43" />
           <folding>
-            <element signature="e#109#127#0" expanded="true" />
+            <element signature="e#31#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/DNSParser.cpp">
+    <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
-          <folding>
-            <element signature="e#42#75#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyLibPCAP/header/PCAPFileReader.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="54" selection-end-column="21" />
         </state>
       </provider>
     </entry>

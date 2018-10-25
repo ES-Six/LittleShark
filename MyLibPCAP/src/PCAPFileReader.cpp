@@ -96,7 +96,7 @@ namespace MyLibPCAP
 
         this->nextPacket = new PacketWrapper();
         this->nextPacket->setPacketHeader(pkthdr);
-        this->nextPacket->setPacketContent(pktcontent);
+        this->nextPacket->setPacketContent(reinterpret_cast<unsigned char *>(pktcontent));
         return this->nextPacket;
     }
 

@@ -18,7 +18,7 @@ namespace MyLibPCAP
         this->packetHeader = packetHeader;
     }
 
-    void MyLibPCAP::PacketWrapper::setPacketContent(char *packetContent) {
+    void MyLibPCAP::PacketWrapper::setPacketContent(unsigned char *packetContent) {
         this->packetContent = packetContent;
     }
 
@@ -26,7 +26,7 @@ namespace MyLibPCAP
         return this->packetHeader;
     }
 
-    char *MyLibPCAP::PacketWrapper::getPacketContent() const {
+    unsigned char *MyLibPCAP::PacketWrapper::getPacketContent() const {
         return this->packetContent;
     }
 }

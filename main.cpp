@@ -6,9 +6,8 @@
 
 int main(int argc, char **argv)
 {
-    // Exemple d'utilisation de mylibpcap : la lib pour lire les fichiers .pcap
-
     /*
+    // Exemple d'utilisation de mylibpcap : la lib pour lire les fichiers .pcap
     //Créer le file writer et le file reader
     MyLibPCAP::PCAPFileReader test = MyLibPCAP::PCAPFileReader("../pcap_test_files/test_ping.pcap");
     MyLibPCAP::PCAPFileWriter test_writer = MyLibPCAP::PCAPFileWriter("../my_own.pcap", 1);
@@ -31,7 +30,12 @@ int main(int argc, char **argv)
 
         if (packetWrapper->getPacketHeader()->caplen == packetWrapper->getPacketHeader()->len) {
             std::cout << "Read a complete packet from file : " << packetWrapper->getPacketHeader()->caplen << " bytes" << std::endl;
-            test_writer.writePacketToFile(packetWrapper->getPacketContent(), packetWrapper->getPacketHeader()->caplen, packetWrapper->getPacketHeader()->ts_sec, packetWrapper->getPacketHeader()->ts_usec);
+            // test_writer.writePacketToFile(packetWrapper->getPacketContent(), packetWrapper->getPacketHeader()->caplen, packetWrapper->getPacketHeader()->ts_sec, packetWrapper->getPacketHeader()->ts_usec);
+            C_NetworkSniffer sniffer;
+            CEthenetFrame *frame = sniffer.parse(packetWrapper->getPacketContent(), packetWrapper->getPacketHeader()->caplen);
+            C_Core tmp;
+            tmp.printEthernetFrameProtocol(frame, packetWrapper->getPacketHeader()->caplen);
+
         } else if (packetWrapper->getPacketHeader()->caplen < packetWrapper->getPacketHeader()->len) {
             std::cout << "Read a packet portion from file : " << packetWrapper->getPacketHeader()->caplen << " of " << packetWrapper->getPacketHeader()->len << std::endl;
         } else {
@@ -46,6 +50,7 @@ int main(int argc, char **argv)
 
 
     // Exemple de lancement du core d'analse réseau de little shark
+
     auto pCore = new C_Core();
     pCore->Process();
 

@@ -15,11 +15,11 @@ namespace MyLibPCAP
         PacketWrapper();
         ~PacketWrapper();
         void setPacketHeader(pcap_pkthdr *);
-        void setPacketContent(char *);
+        void setPacketContent(unsigned char *);
         pcap_pkthdr *getPacketHeader() const;
-        char *getPacketContent() const;
+        unsigned char *getPacketContent() const;
     private:
-        char *packetContent = nullptr;
+        unsigned char *packetContent = nullptr;
         pcap_pkthdr *packetHeader = nullptr;
     };
 }

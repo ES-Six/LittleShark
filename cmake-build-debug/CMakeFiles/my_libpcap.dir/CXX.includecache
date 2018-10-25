@@ -96,6 +96,18 @@ cstdint
 sys/time.h
 -
 
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/src/PCAPFileReader.cpp
+../header/PCAPFileReader.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/PCAPFileReader.h
+iostream
+-
+
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/src/packet_wrapper.cpp
+iostream
+-
+../header/packet_wrapper.h
+/home/brendan/CLionProjects/little_shark/MyLibPCAP/header/packet_wrapper.h
+
 /home/brendan/CLionProjects/little_shark/main.cpp
 iostream
 -
