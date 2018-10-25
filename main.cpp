@@ -51,11 +51,11 @@ int main(int argc, char **argv)
 
 
     //Exemple de generation de packets
-    /*
+
     PacketGenerator generator;
-    unsigned char *packet = generator.createPacket(nullptr, 0, PacketGenerator::WITH_IPV6 | PacketGenerator::WITH_TCP);
+    unsigned char *packet = generator.createPacket(nullptr, 0, PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
     return 0;
-    */
+
 
     // Exemple de lancement du core d'analse réseau de little shark
     auto pCore = new C_Core();

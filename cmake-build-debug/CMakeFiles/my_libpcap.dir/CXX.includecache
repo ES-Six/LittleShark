@@ -91,19 +91,9 @@ vector
 -
 
 /home/brendan/CLionProjects/little_shark/headers/PacketGenerator.h
-netinet/if_ether.h
+cstdint
 -
-netinet/ip.h
--
-netinet/ip6.h
--
-netinet/ip_icmp.h
--
-netinet/udp.h
--
-netinet/tcp.h
--
-arpa/inet.h
+cstdlib
 -
 
 /home/brendan/CLionProjects/little_shark/headers/httpDetector.h
