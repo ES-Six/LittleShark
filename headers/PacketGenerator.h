@@ -38,7 +38,8 @@ private:
     unsigned short IPTCPChecksum(unsigned char *, int);
     void fillICMPv4Header(struct icmphdr *, ssize_t);
     unsigned short icmpChecksum(unsigned short *ptr, int nbytes);
-    void fillTCPHeader(struct tcphdr *header, struct iphdr *, const unsigned char *, ssize_t);
+    void fillTCPHeader(struct tcphdr *, struct iphdr *, const unsigned char *, ssize_t);
+    void fillUDPHeader(struct udphdr *, struct iphdr *, ssize_t);
 
     unsigned char *m_pPacket = nullptr;
     const char *src_adr_mac = nullptr; // xx:xx:xx:xx:xx:xx
