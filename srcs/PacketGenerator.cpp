@@ -21,7 +21,11 @@ PacketGenerator::~PacketGenerator() {
     delete this->m_pPacket;
 }
 
-unsigned short makeNetworkProtocolsChecksum(unsigned char *data, int len)
+ssize_t PacketGenerator::getCreatedPacketSize() const {
+    return this->createdPacketSize;
+}
+
+unsigned short PacketGenerator::makeNetworkProtocolsChecksum(unsigned char *data, int len)
 {
     long sum = 0;
     auto *temp = (unsigned short *)data;
@@ -73,7 +77,7 @@ void PacketGenerator::fillIPV4Header(struct iphdr *header, const char *src_adr_i
     header->check = makeNetworkProtocolsChecksum(reinterpret_cast<unsigned char *>(header), header->ihl * 4);
 }
 
-void PacketGenerator::setTarget(char *src_adr_mac, char *dst_adr_mac, char *src_adr_ip_v4, char *dst_adr_ip_v4) {
+void PacketGenerator::setTarget(const char *src_adr_mac, const char *dst_adr_mac, const char *src_adr_ip_v4, const char *dst_adr_ip_v4) {
     this->src_adr_mac = src_adr_mac;
     this->dst_adr_mac = dst_adr_mac;
     this->src_adr_ip_v4 = src_adr_ip_v4;
@@ -81,7 +85,7 @@ void PacketGenerator::setTarget(char *src_adr_mac, char *dst_adr_mac, char *src_
 
 }
 
-unsigned char *PacketGenerator::createPacket(unsigned char *buffer, ssize_t payload_len, const unsigned int options) {
+unsigned char *PacketGenerator::createPacket(const unsigned char *buffer, ssize_t payload_len, const unsigned int options) {
     // bool forgeIPV4 = ((options & PacketGenerator::WITH_IPV4) == PacketGenerator::WITH_IPV4);
     bool forgeICMP = ((options & PacketGenerator::WITH_ICMP) == PacketGenerator::WITH_ICMP);
     bool forgeTCP = ((options & PacketGenerator::WITH_TCP) == PacketGenerator::WITH_TCP);
@@ -90,8 +94,14 @@ unsigned char *PacketGenerator::createPacket(unsigned char *buffer, ssize_t payl
     ssize_t ip_next_header_len = 0;
     unsigned char ip_protocol = 0;
 
+    if (!this->src_adr_mac || !this->dst_adr_mac || !this->src_adr_ip_v4 || !this->dst_adr_ip_v4) {
+        std::cerr << "Error : target IP / MAC address or source IP / MAC address not specified !" << std::endl;
+        return nullptr;
+    }
+
     if (!forgeICMP && !forgeTCP && !forgeUDP) {
-        forgeUDP = true;
+        std::cerr << "Error : You must specify a packet type (ICMP / TCP / UDP) to forge" << std::endl;
+        return nullptr;
     }
 
     if (forgeICMP) {
@@ -107,6 +117,8 @@ unsigned char *PacketGenerator::createPacket(unsigned char *buffer, ssize_t payl
 
     //Calcul de la taille finale du packet
     packet_len = sizeof(struct ethhdr) + sizeof(struct iphdr) + ip_next_header_len + payload_len;
+
+    this->createdPacketSize = packet_len;
 
     auto packet = new unsigned char[packet_len];
     unsigned char *cursor = packet;

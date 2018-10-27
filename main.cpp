@@ -53,7 +53,14 @@ int main(int argc, char **argv)
     //Exemple de generation de packets
 
     PacketGenerator generator;
-    unsigned char *packet = generator.createPacket(nullptr, 0, PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
+    std::string exemple_buffer = "Loulilol";
+    generator.setTarget("aa:aa:aa:aa:aa:aa", "bb:bb:bb:bb:bb:bb", "192.168.1.2", "1192.168.1.1");
+    unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(exemple_buffer.c_str()), 0, PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
+    if (packet) {
+        std::cout << "Created a " << std::to_string(generator.getCreatedPacketSize()) << " bytes packet succesfully, ready to send" << std::endl;
+    } else {
+        std::cerr << "Failed to create packet..." << std::endl;
+    }
     return 0;
 
 
