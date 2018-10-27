@@ -55,12 +55,15 @@ int main(int argc, char **argv)
     PacketGenerator generator;
     std::string exemple_buffer = "Loulilol";
     generator.setTarget("aa:aa:aa:aa:aa:aa", "bb:bb:bb:bb:bb:bb", "192.168.1.2", "1192.168.1.1");
-    unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(exemple_buffer.c_str()), 0, PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
+    unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(exemple_buffer.c_str()), 9, PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
     if (packet) {
         std::cout << "Created a " << std::to_string(generator.getCreatedPacketSize()) << " bytes packet succesfully, ready to send" << std::endl;
     } else {
         std::cerr << "Failed to create packet..." << std::endl;
     }
+
+    delete[] packet;
+
     return 0;
 
 

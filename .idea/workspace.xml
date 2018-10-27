@@ -90,20 +90,20 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cpp" value="78" />
-          <entry key="h" value="75" />
+          <entry key="h" value="77" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="ObjectiveC" value="153" />
+          <entry key="ObjectiveC" value="155" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="18933" />
-          <entry key="h" value="3459" />
+          <entry key="cpp" value="20246" />
+          <entry key="h" value="3627" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
@@ -111,7 +111,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="79" />
           <entry key="Doxygen file" value="1" />
-          <entry key="ObjectiveC" value="22391" />
+          <entry key="ObjectiveC" value="23872" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -120,13 +120,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/srcs/PacketGenerator.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
+              <caret line="189" column="97" selection-start-line="189" selection-start-column="97" selection-end-line="189" selection-end-column="97" />
               <folding>
                 <element signature="e#42#81#0" expanded="true" />
+                <element signature="e#419#933#0" />
               </folding>
             </state>
           </provider>
@@ -135,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/headers/PacketGenerator.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+            <state relative-caret-position="-168">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="22" />
               <folding>
                 <element signature="e#122#140#0" expanded="true" />
               </folding>
@@ -144,11 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="57" column="89" lean-forward="true" selection-start-line="57" selection-start-column="89" selection-end-line="57" selection-end-column="89" />
+            <state relative-caret-position="297">
+              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -186,6 +187,10 @@
       <find>dnsQueryTypeToStr</find>
       <find>displayDNSEntry</find>
       <find>cout</find>
+      <find>makeNetworkProtocolsChecksum</find>
+      <find>icmpChecksum</find>
+      <find>fillTCPHeader</find>
+      <find>payload_len</find>
     </findStrings>
     <replaceStrings>
       <replace>PCAPFileReader</replace>
@@ -223,9 +228,9 @@
         <option value="$PROJECT_DIR$/MyLibPCAP/src/packet_wrapper.cpp" />
         <option value="$PROJECT_DIR$/MyLibPCAP/header/packet_wrapper.h" />
         <option value="$PROJECT_DIR$/MyLibPCAP/src/PCAPFileReader.cpp" />
-        <option value="$PROJECT_DIR$/srcs/PacketGenerator.cpp" />
         <option value="$PROJECT_DIR$/headers/PacketGenerator.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/srcs/PacketGenerator.cpp" />
       </list>
     </option>
   </component>
@@ -236,8 +241,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="303" />
-    <option name="y" value="131" />
+    <option name="x" value="132" />
+    <option name="y" value="163" />
     <option name="width" value="1595" />
     <option name="height" value="922" />
   </component>
@@ -365,15 +370,15 @@
       <workItem from="1540477456806" duration="4310000" />
       <workItem from="1540481800431" duration="162000" />
       <workItem from="1540491979005" duration="2435000" />
-      <workItem from="1540648323280" duration="1220000" />
+      <workItem from="1540648323280" duration="8312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109563000" />
+    <option name="totallyTimeSpent" value="116655000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="303" y="131" width="1595" height="922" extended-state="0" />
+    <frame x="132" y="163" width="1595" height="922" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21266969" />
@@ -513,13 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/CEthenetFrame.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -545,6 +543,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="e#31#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -555,20 +556,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/PacketGenerator.cpp">
+    <entry file="file://$PROJECT_DIR$/headers/DNSParser.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
-          <folding>
-            <element signature="e#42#81#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/headers/PacketGenerator.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        <state relative-caret-position="-168">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="22" />
           <folding>
             <element signature="e#122#140#0" expanded="true" />
           </folding>
@@ -577,10 +575,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="57" column="89" lean-forward="true" selection-start-line="57" selection-start-column="89" selection-end-line="57" selection-end-column="89" />
+        <state relative-caret-position="297">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/PacketGenerator.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="189" column="97" selection-start-line="189" selection-start-column="97" selection-end-line="189" selection-end-column="97" />
+          <folding>
+            <element signature="e#42#81#0" expanded="true" />
+            <element signature="e#419#933#0" />
           </folding>
         </state>
       </provider>

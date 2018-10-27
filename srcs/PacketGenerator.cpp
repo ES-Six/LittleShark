@@ -25,10 +25,10 @@ ssize_t PacketGenerator::getCreatedPacketSize() const {
     return this->createdPacketSize;
 }
 
-unsigned short PacketGenerator::makeNetworkProtocolsChecksum(unsigned char *data, int len)
+unsigned short PacketGenerator::IPTCPChecksum(unsigned char *data, int len)
 {
     long sum = 0;
-    auto *temp = (unsigned short *)data;
+    auto *temp = reinterpret_cast<unsigned short *>(data);
 
     while(len > 1){
         sum += *temp++;
@@ -46,6 +46,31 @@ unsigned short PacketGenerator::makeNetworkProtocolsChecksum(unsigned char *data
         sum = (sum & 0xFFFF) + (sum >> 16);
 
     return static_cast<unsigned short>(~sum);
+}
+
+unsigned short PacketGenerator::icmpChecksum(unsigned short *ptr, int nbytes)
+{
+    long sum;
+    u_short oddbyte;
+    u_short answer;
+
+    sum = 0;
+    while (nbytes > 1) {
+        sum += *ptr++;
+        nbytes -= 2;
+    }
+
+    if (nbytes == 1) {
+        oddbyte = 0;
+        *((u_char *) & oddbyte) = *(u_char *) ptr;
+        sum += oddbyte;
+    }
+
+    sum = (sum >> 16) + (sum & 0xffff);
+    sum += (sum >> 16);
+    answer = ~sum;
+
+    return (answer);
 }
 
 void PacketGenerator::fillEthernetHeader(struct ethhdr *header, const char *src_adr_mac, const char *dst_adr_mac) {
@@ -74,15 +99,61 @@ void PacketGenerator::fillIPV4Header(struct iphdr *header, const char *src_adr_i
     header->daddr = inet_addr(dst_adr_ip_v4);
 
     // Some de contrôle du header IP
-    header->check = makeNetworkProtocolsChecksum(reinterpret_cast<unsigned char *>(header), header->ihl * 4);
+    header->check = IPTCPChecksum(reinterpret_cast<unsigned char *>(header), header->ihl * 4);
 }
 
-void PacketGenerator::setTarget(const char *src_adr_mac, const char *dst_adr_mac, const char *src_adr_ip_v4, const char *dst_adr_ip_v4) {
+void PacketGenerator::fillICMPv4Header(struct icmphdr *header, ssize_t payload_len) {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<uint16_t > dist(1, 65535);
+
+    header->type = ICMP_ECHO;
+    header->code = 0;
+    header->un.echo.sequence = dist(mt);
+    header->un.echo.id = dist(mt);
+    header->checksum = this->icmpChecksum(reinterpret_cast<unsigned short *>(header), sizeof(struct icmphdr) + payload_len);
+}
+
+void PacketGenerator::fillTCPHeader(struct tcphdr *header, struct iphdr *ipheadr, const unsigned char *payload, ssize_t payload_len) {
+    header->source = htons(this->src_port);
+    header->dest = htons(this->dst_port);
+    header->seq = htonl(111);
+    header->ack_seq = htonl(111);
+    header->res1 = 0;
+    header->doff = (sizeof(struct tcphdr)) / 4;
+    header->syn = 1;
+    header->window = htons(100);
+    header->check = 0;
+    header->urg_ptr = 0;
+
+    auto tcp_segment_len = static_cast<uint16_t >(ntohs(ipheadr->tot_len) - ipheadr->ihl * 4);
+    int total_header_len = sizeof(struct tcpPseudoHeader) + tcp_segment_len;
+    auto temporary_buffer = new unsigned char[total_header_len];
+
+    auto tcp_pseudo_header = reinterpret_cast<struct tcpPseudoHeader *>(temporary_buffer);
+    tcp_pseudo_header->src_ip = ipheadr->saddr;
+    tcp_pseudo_header->dst_ip = ipheadr->daddr;
+    tcp_pseudo_header->rsv = 0;
+    tcp_pseudo_header->proto = ipheadr->protocol;
+    tcp_pseudo_header->tcp_len = htons(tcp_segment_len);
+
+    // Append TCP header
+    std::memcpy((temporary_buffer + sizeof(struct tcpPseudoHeader)), reinterpret_cast<void *>(header), static_cast<size_t>(header->doff * 4));
+    // Append datas
+    std::memcpy((temporary_buffer + sizeof(struct tcpPseudoHeader) + header->doff * 4), payload, static_cast<size_t>(payload_len));
+
+    header->check = this->IPTCPChecksum(reinterpret_cast<unsigned char *>(tcp_pseudo_header), total_header_len);
+
+    delete[] tcp_pseudo_header;
+
+    std::cout << std::to_string(header->check) << std::endl;
+}
+
+void PacketGenerator::setTarget(const char *src_adr_mac, const char *dst_adr_mac, const char *src_adr_ip_v4, const char *dst_adr_ip_v4, uint16_t src_port, uint16_t dst_port) {
     this->src_adr_mac = src_adr_mac;
     this->dst_adr_mac = dst_adr_mac;
     this->src_adr_ip_v4 = src_adr_ip_v4;
     this->dst_adr_ip_v4 = dst_adr_ip_v4;
-
 }
 
 unsigned char *PacketGenerator::createPacket(const unsigned char *buffer, ssize_t payload_len, const unsigned int options) {
@@ -118,8 +189,6 @@ unsigned char *PacketGenerator::createPacket(const unsigned char *buffer, ssize_
     //Calcul de la taille finale du packet
     packet_len = sizeof(struct ethhdr) + sizeof(struct iphdr) + ip_next_header_len + payload_len;
 
-    this->createdPacketSize = packet_len;
-
     auto packet = new unsigned char[packet_len];
     unsigned char *cursor = packet;
 
@@ -127,22 +196,26 @@ unsigned char *PacketGenerator::createPacket(const unsigned char *buffer, ssize_
 
     cursor += sizeof(struct ethhdr);
 
+    auto ipheadr = reinterpret_cast<struct iphdr *>(cursor);
     this->fillIPV4Header(reinterpret_cast<struct iphdr *>(cursor), this->src_adr_ip_v4, this->dst_adr_ip_v4, htons(packet_len - sizeof(struct ethhdr)), ip_protocol);
 
     cursor += sizeof(struct iphdr);
 
     if (forgeICMP) {
-        // this->fillICMPv4Header(reinterpret_cast<struct icmphdr *>(cursor));
-        cursor += sizeof(struct icmphdr);
+        this->fillICMPv4Header(reinterpret_cast<struct icmphdr *>(cursor), payload_len);
+        std::memcpy((packet + sizeof(struct ethhdr) + ipheadr->ihl * 4 + sizeof(struct icmphdr)), buffer,
+                    static_cast<size_t>(payload_len));
     } else if (forgeTCP) {
-        // this->fillTCPHeader(reinterpret_cast<struct tcphdr *>(cursor));
-        cursor += sizeof(struct tcphdr);
+        this->fillTCPHeader(reinterpret_cast<struct tcphdr *>(cursor), ipheadr, buffer, payload_len);
+        std::memcpy((packet + sizeof(struct ethhdr) + ipheadr->ihl * 4 + reinterpret_cast<struct tcphdr *>(cursor)->doff * 4), buffer,
+                    static_cast<size_t>(payload_len));
     } else {
         // this->fillTCPHeader(reinterpret_cast<struct udphdr *>(cursor));
         cursor += sizeof(struct udphdr);
+        // this->fillPayload();
     }
 
-    // this->fillPayload();
+    this->createdPacketSize = sizeof(struct ethhdr) + ntohs(ipheadr->tot_len);
 
     return packet;
 }
