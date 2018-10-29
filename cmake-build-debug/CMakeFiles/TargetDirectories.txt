@@ -1,4 +1,0 @@
-/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/test.elf.dir
-/home/brendan/CLionProjects/little_shark/cmake-build-debug/CMakeFiles/my_libpcap.dir
