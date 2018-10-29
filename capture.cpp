@@ -11,11 +11,15 @@ Capture::Capture(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->protocolFilter->addItem("No filter", 0);
+    ui->protocolFilter->addItem("ARP", 555);
     ui->protocolFilter->addItem("ICMPv4", 1);
     ui->protocolFilter->addItem("TCP", 6);
     ui->protocolFilter->addItem("UDP", 17);
+    ui->protocolFilter->addItem("DNS", 666);
+    ui->protocolFilter->addItem("HTTP", 777);
 
     ui->stopCapture->setVisible(false);
+    ui->filterPushButton->setEnabled(true);
 
     connect(ui->listWidget, SIGNAL(itemClicked(QListWidgetItem *)),
                 this, SLOT(onListItemClicked(QListWidgetItem *)));
@@ -23,6 +27,95 @@ Capture::Capture(QWidget *parent) :
 
 const std::vector<CEthenetFrame *> &Capture::getCapturedFrames() const {
     return this->ethernetFrameVector;
+}
+
+bool Capture::keepPacket(CEthenetFrame *frame) {
+    if (frame == nullptr)
+        return false;
+
+    char *src_ip = nullptr;
+    char *dst_ip = nullptr;
+    uint16_t src_port = 0;
+    uint16_t dst_port = 0;
+    bool validInt = false;
+    uint16_t proto = 0;
+
+    if (frame->isIPv4Protocol()) {
+        proto = frame->getIPv4Header()->protocol;
+        src_ip = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr));
+        dst_ip = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr));
+        if (frame->getCPacket()->isTCPProtocol()) {
+            src_port = ntohs(frame->getCPacket()->getTCPHeader()->th_sport);
+            dst_port = ntohs(frame->getCPacket()->getTCPHeader()->th_dport);
+
+            if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 666 && !frame->getCPacket()->getDNSParser().isValiddDNSPacket()) {
+                return false;
+            }
+            if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 777 && !frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()) {
+                return false;
+            }
+
+        } else if (frame->getCPacket()->isUDPProtocol()) {
+            src_port = ntohs(frame->getCPacket()->getUDPHeader()->source);
+            dst_port = ntohs(frame->getCPacket()->getUDPHeader()->dest);
+
+            if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 666 && !frame->getCPacket()->getDNSParser().isValiddDNSPacket()) {
+                return false;
+            }
+            if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 777 && !frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()) {
+                return false;
+            }
+        } else {
+            if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 666 || ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 777) {
+                return false;
+            }
+        }
+    } else {
+        if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 666 || ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 777) {
+            return false;
+        }
+    }
+
+    if ((ui->filterSrcIP->text().length() > 0 && src_ip == nullptr) ||
+            (ui->filterDstIP->text().length() > 0 && dst_ip == nullptr)) {
+        return false;
+    }
+
+    if (ui->filterSrcIP->text().length() > 0 && ui->filterSrcIP->text() != src_ip) {
+        return false;
+    }
+
+    if (ui->filterDstIP->text().length() > 0 && ui->filterDstIP->text() != src_ip) {
+        return false;
+    }
+
+    if (ui->filterSrcPort->text().length() > 0 && ui->filterSrcPort->text().toInt(&validInt, 10) != src_port) {
+        return false;
+    }
+
+    if (ui->filterDstPort->text().length() > 0 && ui->filterDstPort->text().toInt(&validInt, 10) != dst_port) {
+        return false;
+    }
+
+    if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) != 555 &&
+            ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) != 666 &&
+            ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) != 777) {
+        if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) != 0 && proto != ui->protocolFilter->itemData(ui->protocolFilter->currentIndex())) {
+            return false;
+        }
+    }
+
+    if (ui->protocolFilter->itemData(ui->protocolFilter->currentIndex()) == 555 && !frame->isARPProtocol()) {
+        return false;
+    }
+
+    if (src_ip != nullptr && dst_ip != nullptr) {
+        std::cout << "SRC: " << src_ip << std::endl;
+        std::cout << "DST: " << dst_ip << std::endl;
+        std::cout << "SRC PORT: " << src_port << std::endl;
+        std::cout << "DST PORT: " << dst_port << std::endl;
+    }
+    return true;
 }
 
 std::string Capture::bufferToStringPrettyfier(const void *object, ssize_t max_len)
@@ -54,6 +147,7 @@ bool Capture::connectToRawSocket() {
     connect(timer, SIGNAL(timeout()), this, SLOT(captureEverything()));
     timer->start(50); //time specified in ms
 
+    ui->filterPushButton->setEnabled(false);
     ui->stopCapture->setVisible(true);
     return true;
 }
@@ -153,6 +247,7 @@ Capture::~Capture()
 
 void Capture::on_stopCapture_clicked()
 {
+    ui->filterPushButton->setEnabled(true);
     disconnect(timer, SIGNAL(timeout()), this, SLOT(captureEverything()));
     delete timer;
     timer = nullptr;
@@ -162,4 +257,22 @@ void Capture::on_stopCapture_clicked()
     this->sock_raw = -1;
     ui->stopCapture->setText("Stoped !");
     ui->stopCapture->setEnabled(false);
+}
+
+void Capture::on_filterPushButton_clicked()
+{
+    while(ui->listWidget->count()>0)
+    {
+      ui->listWidget->takeItem(0);
+    }
+    for (CEthenetFrame *frame : this->ethernetFrameVector) {
+        if (this->keepPacket(frame)) {
+            QListWidgetItem *itm = new QListWidgetItem();
+            itm->setText(this->generateListItemText(frame, frame->getTotalLen()).c_str());
+            QVariant v;
+            v.setValue((void *)frame);
+            itm->setData(Qt::UserRole, v);
+            ui->listWidget->addItem(itm);
+        }
+    }
 }

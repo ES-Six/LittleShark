@@ -35,10 +35,12 @@ private slots:
     void captureEverything();
     void onListItemClicked(QListWidgetItem *item);
     void on_stopCapture_clicked();
+    void on_filterPushButton_clicked();
 
 private:
     std::string generateListItemText(CEthenetFrame *, ssize_t);
     std::string bufferToStringPrettyfier(const void *object, ssize_t max_len);
+    bool keepPacket(CEthenetFrame *frame);
 
     const unsigned int MAX_PACKET_LEN = 65536;
     Ui::Capture *ui;
