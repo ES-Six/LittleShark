@@ -140,7 +140,7 @@ bool Capture::connectToRawSocket() {
         disconnect(timer, SIGNAL(timeout()), this, SLOT(captureEverything()));
         delete timer;
         timer = nullptr;
-        QMessageBox::information(this, "Initialisation error", (std::string("Unable to create the socket: ") + std::strerror(errno)).c_str());
+        QMessageBox::critical(this, "Initialisation error", (std::string("Unable to create the socket: ") + std::strerror(errno)).c_str());
         return false;
     }
 

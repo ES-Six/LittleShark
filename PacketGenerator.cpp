@@ -76,9 +76,11 @@ unsigned short PacketGenerator::icmpChecksum(unsigned short *ptr, int nbytes)
 void PacketGenerator::fillEthernetHeader(struct ethhdr *header, const char *src_adr_mac, const char *dst_adr_mac) {
     // Remplir Adresse MAC source et destination
     // Definir le protocol à IPV4
+    header->h_proto = htons(ETHERTYPE_IP);
+    if (ether_aton(src_adr_mac) == nullptr || ether_aton(dst_adr_mac) == nullptr)
+        return;
     std::memcpy(header->h_source, ether_aton(src_adr_mac), 6);
     std::memcpy(header->h_dest, ether_aton(dst_adr_mac), 6);
-    header->h_proto = htons(ETHERTYPE_IP);
 }
 
 void PacketGenerator::fillIPV4Header(struct iphdr *header, const char *src_adr_ip_v4, const char *dst_adr_ip_v4, uint16_t tot_len, unsigned char protocol) {
@@ -145,8 +147,6 @@ void PacketGenerator::fillTCPHeader(struct tcphdr *header, struct iphdr *ipheadr
     header->check = this->IPTCPChecksum(reinterpret_cast<unsigned char *>(tcp_pseudo_header), total_header_len);
 
     delete[] tcp_pseudo_header;
-
-    std::cout << std::to_string(header->check) << std::endl;
 }
 
 void PacketGenerator::fillUDPHeader(struct udphdr *header, struct iphdr *ipheadr, ssize_t payload_len) {
