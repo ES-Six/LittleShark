@@ -50,7 +50,8 @@ void Forge::on_forgeAndSendButton_clicked()
     PacketGenerator generator;
     generator.setTarget(ui->senderMACAddr->text().toStdString().c_str(), ui->targetMACAddr->text().toStdString().c_str(), ui->SenderIPAddr->text().toStdString().c_str(), ui->targetIPAddr->text().toStdString().c_str(), ui->sourcePort->text().toInt(), ui->destinationPort->text().toInt());
     const char *packetContent = ui->packetContent->document()->toPlainText().toStdString().c_str();
-    unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(packetContent), ui->packetContent->document()->toPlainText().length(), PacketGenerator::WITH_IPV4 | PacketGenerator::WITH_TCP);
+    uint16_t proto = ui->protocolSelector->itemData(ui->protocolSelector->currentIndex()).value<uint16_t>();
+    unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(packetContent), ui->packetContent->document()->toPlainText().length(), PacketGenerator::WITH_IPV4 | proto);
     if (packet) {
         int sock_raw = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
         if(sock_raw == -1){
@@ -76,7 +77,6 @@ void Forge::on_forgeAndSendButton_clicked()
             QMessageBox::critical(this, "Failed to get index", "Error getting interface index");
             return;
         }
-
 
         sll.sll_family = AF_PACKET;
         sll.sll_ifindex = ifr.ifr_ifindex;
