@@ -232,7 +232,7 @@
     <string>Capture stats :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="ipv4Stats">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -245,7 +245,7 @@
     <string>IPv4: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_16">
+  <widget class="QLabel" name="ipv6Stats">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -258,7 +258,7 @@
     <string>IPv6: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_17">
+  <widget class="QLabel" name="ARPStats">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -271,7 +271,7 @@
     <string>ARP: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_18">
+  <widget class="QLabel" name="TCPStats">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -284,7 +284,7 @@
     <string>TCP: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_19">
+  <widget class="QLabel" name="UDPStats">
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -297,7 +297,7 @@
     <string>UDP: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_20">
+  <widget class="QLabel" name="icmpv4Stats">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -307,10 +307,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>ICMP: 0</string>
+    <string>ICMPv4: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_21">
+  <widget class="QLabel" name="DNSStats">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -323,7 +323,7 @@
     <string>DNS: 0</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_22">
+  <widget class="QLabel" name="HTTPStats">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -357,6 +357,19 @@
    </property>
    <property name="text">
     <string>Stop live capture</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="unknownStats">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>130</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Unknown: 0</string>
    </property>
   </widget>
  </widget>

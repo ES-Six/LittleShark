@@ -186,12 +186,52 @@ std::string Capture::generateListItemText(CEthenetFrame *frame, ssize_t total_le
     return text;
 }
 
+void Capture::addToStats(CEthenetFrame *frame) {
+    if (frame->isARPProtocol()) {
+        this->ARPStats ++;
+    } else if (frame->isIPv4Protocol()) {
+        this->ipv4Stats ++;
+        if (frame->getCPacket() && frame->getCPacket()->isICMPv4Protocol()) {
+            this->ICMPv4Stats ++;
+        } else if (frame->getCPacket() && frame->getCPacket()->isTCPProtocol()) {
+            this->TCPStats ++;
+            if (frame->getCPacket()->getDNSParser().isValiddDNSPacket()) {
+                this->DNSStats ++;
+            } else if (frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()) {
+                this->HTTPStats ++;
+            }
+        } else if (frame->getCPacket() && frame->getCPacket()->isUDPProtocol()) {
+            this->UDPStats ++;
+            if (frame->getCPacket()->getDNSParser().isValiddDNSPacket()) {
+                this->DNSStats ++;
+            } else if (frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()) {
+                this->HTTPStats ++;
+            }
+        }
+    } else if (frame->isIPv6Protocol()) {
+        this->ipv6Stats ++;
+    } else {
+        this->unknownStats ++;
+    }
+
+    ui->ARPStats->setText(("ARP: "+std::to_string(this->ARPStats)).c_str());
+    ui->ipv4Stats->setText(("IPv4: "+std::to_string(this->ipv4Stats)).c_str());
+    ui->ipv6Stats->setText(("IPv6: "+std::to_string(this->ipv6Stats)).c_str());
+    ui->TCPStats->setText(("TCP: "+std::to_string(this->TCPStats)).c_str());
+    ui->UDPStats->setText(("UDP: "+std::to_string(this->UDPStats)).c_str());
+    ui->icmpv4Stats->setText(("ICMPv4: "+std::to_string(this->ICMPv4Stats)).c_str());
+    ui->DNSStats->setText(("DNS: "+std::to_string(this->DNSStats)).c_str());
+    ui->HTTPStats->setText(("HTTP: "+std::to_string(this->HTTPStats)).c_str());
+    ui->unknownStats->setText(("Unknown: "+std::to_string(this->unknownStats)).c_str());
+}
+
 void Capture::captureEverything() {
     ssize_t total_len;
     memset(buffer, 0, MAX_PACKET_LEN);
     total_len = recvfrom(sock_raw, buffer, MAX_PACKET_LEN, MSG_DONTWAIT, &saddr, &sockaddr_size);
     if (total_len > 0) {
         CEthenetFrame *frame = this->sniffer.parse(buffer, total_len);
+        this->addToStats(frame);
         ethernetFrameVector.emplace_back(frame);
         QListWidgetItem *itm = new QListWidgetItem();
         itm->setText(this->generateListItemText(frame, total_len).c_str());
@@ -223,6 +263,7 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
 
 void Capture::addPacketToList(unsigned char *buffer, ssize_t total_len) {
     CEthenetFrame *frame = this->sniffer.parse(buffer, total_len);
+    this->addToStats(frame);
     ethernetFrameVector.emplace_back(frame);
     QListWidgetItem *itm = new QListWidgetItem();
     itm->setText(this->generateListItemText(frame, total_len).c_str());
