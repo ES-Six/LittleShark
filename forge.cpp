@@ -50,6 +50,11 @@ void Forge::on_forgeAndSendButton_clicked()
     PacketGenerator generator;
     generator.setTarget(ui->senderMACAddr->text().toStdString().c_str(), ui->targetMACAddr->text().toStdString().c_str(), ui->SenderIPAddr->text().toStdString().c_str(), ui->targetIPAddr->text().toStdString().c_str(), ui->sourcePort->text().toInt(), ui->destinationPort->text().toInt());
     const char *packetContent = ui->packetContent->document()->toPlainText().toStdString().c_str();
+
+    if (ui->packetContent->document()->toPlainText().length() > 65000) {
+        ui->packetContent->document()->setPlainText(ui->packetContent->document()->toPlainText().toStdString().substr(0, 65000).c_str());
+    }
+
     uint16_t proto = ui->protocolSelector->itemData(ui->protocolSelector->currentIndex()).value<uint16_t>();
     unsigned char *packet = generator.createPacket(reinterpret_cast<const unsigned char *>(packetContent), ui->packetContent->document()->toPlainText().length(), PacketGenerator::WITH_IPV4 | proto);
     if (packet) {

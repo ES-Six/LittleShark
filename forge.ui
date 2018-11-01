@@ -61,6 +61,9 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>17</number>
+   </property>
    <property name="placeholderText">
     <string>FF:FF:FF:FF:FF:FF</string>
    </property>
@@ -73,6 +76,9 @@
      <width>191</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>17</number>
    </property>
    <property name="placeholderText">
     <string>FF:FF:FF:FF:FF:FF</string>
@@ -113,6 +119,9 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>15</number>
+   </property>
    <property name="placeholderText">
     <string>127.0.0.1</string>
    </property>
@@ -125,6 +134,9 @@
      <width>191</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>15</number>
    </property>
    <property name="placeholderText">
     <string>127.0.0.1</string>
@@ -152,6 +164,9 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>7</number>
+   </property>
    <property name="placeholderText">
     <string>80</string>
    </property>
@@ -177,6 +192,9 @@
      <width>191</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>7</number>
    </property>
    <property name="placeholderText">
     <string>8080</string>
