@@ -9,6 +9,11 @@
 std::string C_NetworkSniffer::bufferToStringPrettyfier(const void *object, ssize_t max_len)
 {
     std::string packet;
+
+    if (object == nullptr) {
+        return packet;
+    }
+
     const char * bytes = reinterpret_cast<const char *>(object);
     for(size_t i = 0; i < max_len; i ++)
     {
@@ -24,6 +29,10 @@ std::string C_NetworkSniffer::bufferToStringPrettyfier(const void *object, ssize
 
 CEthenetFrame *C_NetworkSniffer::parse(unsigned char *buffer, ssize_t total_len)
 {
+    if (buffer == nullptr) {
+        return nullptr;
+    }
+
     auto ethernetFrame = new CEthenetFrame();
 
     // Récupération du header ETHERNET

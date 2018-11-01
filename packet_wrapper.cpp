@@ -5,11 +5,11 @@
 namespace MyLibPCAP
 {
     MyLibPCAP::PacketWrapper::PacketWrapper() {
-        std::cout << "PacketWrapper built" << std::endl;
+
     }
 
     MyLibPCAP::PacketWrapper::~PacketWrapper() {
-        std::cout << "PacketWrapper destroyed" << std::endl;
+
         delete this->packetHeader;
         delete[] this->packetContent;
     }

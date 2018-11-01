@@ -145,7 +145,7 @@ bool Capture::connectToRawSocket() {
     }
 
     connect(timer, SIGNAL(timeout()), this, SLOT(captureEverything()));
-    timer->start(50); //time specified in ms
+    timer->start(3); //time specified in ms
 
     ui->filterPushButton->setEnabled(false);
     ui->stopCapture->setVisible(true);
@@ -239,7 +239,6 @@ void Capture::captureEverything() {
         v.setValue((void *)frame);
         itm->setData(Qt::UserRole, v);
         ui->listWidget->addItem(itm);
-        std::cout << "Packet captured" << std::endl;
     }
     if (errno == EWOULDBLOCK || errno == EAGAIN) {
         return;

@@ -173,12 +173,12 @@ unsigned char *PacketGenerator::createPacket(const unsigned char *buffer, ssize_
     unsigned char ip_protocol = 0;
 
     if (!this->src_adr_mac || !this->dst_adr_mac || !this->src_adr_ip_v4 || !this->dst_adr_ip_v4) {
-        std::cerr << "Error : target IP / MAC address or source IP / MAC address not specified !" << std::endl;
+        // std::cerr << "Error : target IP / MAC address or source IP / MAC address not specified !" << std::endl;
         return nullptr;
     }
 
     if (!forgeICMP && !forgeTCP && !forgeUDP) {
-        std::cerr << "Error : You must specify a packet type (ICMP / TCP / UDP) to forge" << std::endl;
+        // std::cerr << "Error : You must specify a packet type (ICMP / TCP / UDP) to forge" << std::endl;
         return nullptr;
     }
 
