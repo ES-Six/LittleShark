@@ -33,17 +33,25 @@ bool Capture::keepPacket(CEthenetFrame *frame) {
     if (frame == nullptr)
         return false;
 
-    char *src_ip = nullptr;
-    char *dst_ip = nullptr;
+    const char *src_ip = nullptr;
+    const char *dst_ip = nullptr;
     uint16_t src_port = 0;
     uint16_t dst_port = 0;
     bool validInt = false;
     uint16_t proto = 0;
+    std::string srcIpv4;
+    std::string dstIpv4;
 
     if (frame->isIPv4Protocol()) {
         proto = frame->getIPv4Header()->protocol;
-        src_ip = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr));
-        dst_ip = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr));
+        srcIpv4.assign(inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr)));
+        dstIpv4.assign(inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr)));
+        src_ip = srcIpv4.c_str();
+        dst_ip = dstIpv4.c_str();
+
+        std::cout << "SRC: " << src_ip << std::endl;
+        std::cout << "DST: " << dst_ip << std::endl;
+
         if (frame->getCPacket()->isTCPProtocol()) {
             src_port = ntohs(frame->getCPacket()->getTCPHeader()->th_sport);
             dst_port = ntohs(frame->getCPacket()->getTCPHeader()->th_dport);
@@ -85,7 +93,7 @@ bool Capture::keepPacket(CEthenetFrame *frame) {
         return false;
     }
 
-    if (ui->filterDstIP->text().length() > 0 && ui->filterDstIP->text() != src_ip) {
+    if (ui->filterDstIP->text().length() > 0 && ui->filterDstIP->text() != dst_ip) {
         return false;
     }
 
@@ -109,12 +117,6 @@ bool Capture::keepPacket(CEthenetFrame *frame) {
         return false;
     }
 
-    if (src_ip != nullptr && dst_ip != nullptr) {
-        std::cout << "SRC: " << src_ip << std::endl;
-        std::cout << "DST: " << dst_ip << std::endl;
-        std::cout << "SRC PORT: " << src_port << std::endl;
-        std::cout << "DST PORT: " << dst_port << std::endl;
-    }
     return true;
 }
 
