@@ -250,13 +250,81 @@ void Capture::captureEverything() {
 }
 
 void Capture::onListItemClicked(QListWidgetItem *item) {
-    std::cout << "List item cicked" << std::endl;
-
     CEthenetFrame *frame = reinterpret_cast<CEthenetFrame *>(item->data(Qt::UserRole).value<void *>());
+    if(!frame){
+        std::cerr << "Unable to fetch the list item" << std::endl;
+        return;
+    }
 
-    if (frame) {
-        const unsigned char *packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
-        ui->packetContentVisualisation->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
+    const unsigned char *packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
+    ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
+
+    /* Update the type */
+    std::string protocol = "Type: ";
+    if(frame->isARPProtocol()){
+        protocol.append("ARP");
+    } else if(frame->isIPv4Protocol()){
+        protocol.append("IPV4");
+        if(frame->getCPacket()->isTCPProtocol()){
+           if(frame->getCPacket()->getDNSParser().isValiddDNSPacket()){
+               protocol.append(" DNS(TCP)");
+           } else if(frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()){
+               protocol.append(" HTTP(TCP)");
+           } else {
+               protocol.append(" Unknow(TCP)");
+           }
+       } else if(frame->getCPacket()->isUDPProtocol()){
+           if(frame->getCPacket()->getDNSParser().isValiddDNSPacket()){
+               protocol.append(" DNS(UDP)");
+           } else if(frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()){
+               protocol.append(" HTTP(UDP)");
+           } else {
+               protocol.append(" Unknow(UDP)");
+           }
+       }
+    } else if(frame->isIPv6Protocol()){
+        protocol.append("IPV6");
+    } else {
+        protocol.append("Unknow");
+    }
+
+    ui->packetProtocol->setText(protocol.c_str());
+
+    /* Update the length */
+    auto size = frame->getTotalLen();
+    if(size > 0){
+        std::string textSize = std::string(std::string("Size: ") + std::to_string(size) + " bytes");
+        ui->packetSize->setText(textSize.c_str());
+    } else {
+        ui->packetSize->setText("Size:");
+    }
+
+    /* Update the IPs and ports */
+    ui->packetSource->setText("IP Source:");
+    ui->packetDestination->setText("IP Destination:");
+    ui->packetPortSource->setText("Port Destination: ");
+    ui->packetPortDestination->setText("Port Source: ");
+
+    char *src = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr));
+    if(src != nullptr && strlen(src) > 0){
+        std::string src_ip = std::string("IP Source: ") + std::string(src);
+        ui->packetSource->setText(src_ip.c_str());
+    }
+    char *dst = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr));
+    if(dst != nullptr && strlen(dst) > 0){
+        std::string dst_ip = std::string("IP Destination: ") + std::string(dst);
+        ui->packetDestination->setText(dst_ip.c_str());
+    }
+
+    uint16_t sport = ntohs(frame->getCPacket()->getUDPHeader()->source);
+    uint16_t dport = ntohs(frame->getCPacket()->getUDPHeader()->dest);
+    if(sport > 0){
+        std::string src_port = std::string("Port Destination: ") + std::to_string(sport);
+        ui->packetPortSource->setText(src_port.c_str());
+    }
+    if(dport > 0){
+        std::string dst_port = std::string("Port Source: ") + std::to_string(dport);
+        ui->packetPortDestination->setText(dst_port.c_str());
     }
 }
 
