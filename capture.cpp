@@ -336,8 +336,6 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
             ui->packetPortDestination->setText(dst_port.c_str());
         }
 
-        packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
-        ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
     } else if(frame->isIPv6Protocol()){
         char src[INET6_ADDRSTRLEN];
         char dst[INET6_ADDRSTRLEN];
@@ -363,8 +361,6 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
             ui->packetPortDestination->setText(dst_port.c_str());
         }
 
-        packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
-        ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
     }  else if(frame->isARPProtocol()){
         std::string arpContent;
         struct arphdr *arp_hdr = frame->getARPHeader();
@@ -374,8 +370,10 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
         arpContent.append(std::string("Operation: ") + std::to_string(arp_hdr->ar_op));
         arpContent.append("\n");
 
-        ui->packetContentAnalysisRaw->document()->setPlainText(arpContent.c_str());
+        ui->packetContentAnalyzed->document()->setPlainText(arpContent.c_str());
     }
+    packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
+    ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
 }
 
 void Capture::addPacketToList(unsigned char *buffer, ssize_t total_len) {

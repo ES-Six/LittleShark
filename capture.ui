@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>561</height>
+    <width>977</width>
+    <height>643</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -170,9 +170,9 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>350</y>
+     <y>330</y>
      <width>371</width>
-     <height>181</height>
+     <height>131</height>
     </rect>
    </property>
    <property name="readOnly">
@@ -414,13 +414,13 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>330</y>
-     <width>62</width>
+     <y>310</y>
+     <width>91</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Content:</string>
+    <string>Raw content</string>
    </property>
   </widget>
   <widget class="QLabel" name="packetProtocol">
@@ -447,6 +447,32 @@
    </property>
    <property name="text">
     <string>Size:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>470</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Analyzed Content</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="packetContentAnalyzed">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>490</y>
+     <width>371</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
