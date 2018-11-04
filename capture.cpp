@@ -313,9 +313,77 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
         if(frame->getCPacket()->isTCPProtocol()){
             sport = ntohs(frame->getCPacket()->getTCPHeader()->source);
             dport = ntohs(frame->getCPacket()->getTCPHeader()->dest);
+
+            /* Parse the packets type */
+            if(frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()){
+                std::string httpContent;
+
+                if(frame->getCPacket()->getHTTPDetector().isHTTPRequest()){
+                    httpContent.append("Protocol: ").append(frame->getCPacket()->getHTTPDetector().getProtocolVersion()).append("\n");
+                    httpContent.append("Method: ").append(frame->getCPacket()->getHTTPDetector().getMethod()).append("\n");
+                    httpContent.append("URL: ").append(frame->getCPacket()->getHTTPDetector().getUrl()).append("\n");
+                } else if(frame->getCPacket()->getHTTPDetector().isHTTPResponse()){
+                    httpContent.append("Protocol: ").append(frame->getCPacket()->getHTTPDetector().getProtocolVersion()).append("\n");
+                    httpContent.append("Response Code: ").append(frame->getCPacket()->getHTTPDetector().getReturnCode()).append("\n");
+                }
+
+                ui->packetContentAnalyzed->document()->setPlainText(httpContent.c_str());
+            }
+            else if(frame->getCPacket()->getDNSParser().isValiddDNSPacket()){
+                std::string dnsContent;
+                if(frame->getCPacket()->getDNSParser().isDNSQuery()){
+                    dnsContent.append("Domain: ").append(frame->getCPacket()->getDNSParser().getDomainName()).append("\n");
+                    dnsContent.append("Type: ").append(std::to_string(frame->getCPacket()->getDNSParser().getQueryType())).append("\n");
+                    ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                } else if(frame->getCPacket()->getDNSParser().isDNSAnswer()){
+                    if(frame->getCPacket()->getDNSParser().getRecords().empty()){
+                        dnsContent.append("Empty answer").append("\n");
+                        ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                    } else {
+                        for (const std::string &record : frame->getCPacket()->getDNSParser().getRecords()) {
+                            dnsContent.append(DNSParser::dnsQueryTypeToStr(frame->getCPacket()->getDNSParser().getQueryType())).append(" ").append(frame->getCPacket()->getDNSParser().getDomainName()).append(" ").append(record).append("\n");
+                        }
+                        ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                    }
+                }
+            }
         } else if(frame->getCPacket()->isUDPProtocol()){
             sport = ntohs(frame->getCPacket()->getUDPHeader()->source);
             dport = ntohs(frame->getCPacket()->getUDPHeader()->dest);
+
+            /* Parse the packets type */
+            if(frame->getCPacket()->getHTTPDetector().isValiddHTTPPacket()){
+                std::string httpContent;
+
+                if(frame->getCPacket()->getHTTPDetector().isHTTPRequest()){
+                    httpContent.append("Protocol: ").append(frame->getCPacket()->getHTTPDetector().getProtocolVersion()).append("\n");
+                    httpContent.append("Method: ").append(frame->getCPacket()->getHTTPDetector().getMethod()).append("\n");
+                    httpContent.append("URL: ").append(frame->getCPacket()->getHTTPDetector().getUrl()).append("\n");
+                } else if(frame->getCPacket()->getHTTPDetector().isHTTPResponse()){
+                    httpContent.append("Protocol: ").append(frame->getCPacket()->getHTTPDetector().getProtocolVersion()).append("\n");
+                    httpContent.append("Response Code: ").append(frame->getCPacket()->getHTTPDetector().getReturnCode()).append("\n");
+                }
+
+                ui->packetContentAnalyzed->document()->setPlainText(httpContent.c_str());
+            }
+            else if(frame->getCPacket()->getDNSParser().isValiddDNSPacket()){
+                std::string dnsContent;
+                if(frame->getCPacket()->getDNSParser().isDNSQuery()){
+                    dnsContent.append("Domain: ").append(frame->getCPacket()->getDNSParser().getDomainName()).append("\n");
+                    dnsContent.append("Type: ").append(std::to_string(frame->getCPacket()->getDNSParser().getQueryType())).append("\n");
+                    ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                } else if(frame->getCPacket()->getDNSParser().isDNSAnswer()){
+                    if(frame->getCPacket()->getDNSParser().getRecords().empty()){
+                        dnsContent.append("Empty answer").append("\n");
+                        ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                    } else {
+                        for (const std::string &record : frame->getCPacket()->getDNSParser().getRecords()) {
+                            dnsContent.append(DNSParser::dnsQueryTypeToStr(frame->getCPacket()->getDNSParser().getQueryType())).append(" ").append(frame->getCPacket()->getDNSParser().getDomainName()).append(" ").append(record).append("\n");
+                        }
+                        ui->packetContentAnalyzed->document()->setPlainText(dnsContent.c_str());
+                    }
+                }
+            }
         }
 
         if(src != nullptr && strlen(src) > 0){
