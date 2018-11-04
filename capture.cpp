@@ -306,11 +306,9 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
     uint16_t sport = 0;
     uint16_t dport = 0;
     const unsigned char *packet;
-    if(frame->isIPv4Protocol()){
-        char *src = {0};
-        char *dst = {0};
-        src = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr));
-        dst = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr));
+    if(frame->isIPv4Protocol()) {
+        const char *src = std::string(inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr))).c_str();
+        const char *dst = std::string(inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr))).c_str();
         if(frame->getCPacket()->isTCPProtocol()){
             sport = ntohs(frame->getCPacket()->getTCPHeader()->source);
             dport = ntohs(frame->getCPacket()->getTCPHeader()->dest);
@@ -410,7 +408,7 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
         char dst[INET6_ADDRSTRLEN];
 
         inet_ntop(AF_INET6, &frame->getIPv6Header()->saddr, src, INET6_ADDRSTRLEN);
-        inet_ntop(AF_INET6, &frame->getIPv6Header()->saddr, dst, INET6_ADDRSTRLEN);
+        inet_ntop(AF_INET6, &frame->getIPv6Header()->daddr, dst, INET6_ADDRSTRLEN);
 
         if(src != nullptr && strlen(src) > 0){
             std::string src_ip = std::string("IP Source: ") + std::string(src);
