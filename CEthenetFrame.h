@@ -4,6 +4,7 @@
 #include <arpa/inet.h>
 #include <netinet/if_ether.h>
 #include <netinet/ip.h>
+#include <linux/ipv6.h>
 #include <netinet/ip6.h>
 #include "CPacket.h"
 
