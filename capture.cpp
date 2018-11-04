@@ -256,9 +256,6 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
         return;
     }
 
-    const unsigned char *packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
-    ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
-
     /* Update the type */
     std::string protocol = "Type: ";
     if(frame->isARPProtocol()){
@@ -305,43 +302,79 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
     ui->packetPortSource->setText("Port Destination: ");
     ui->packetPortDestination->setText("Port Source: ");
 
-    char *src = {0};
-    char *dst = {0};
     uint16_t sport = 0;
     uint16_t dport = 0;
+    const unsigned char *packet;
     if(frame->isIPv4Protocol()){
+        char *src = {0};
+        char *dst = {0};
         src = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->saddr));
         dst = inet_ntoa(*(in_addr*)(&frame->getIPv4Header()->daddr));
-        if(!frame->getARPHeader()){
-            if(frame->getCPacket()->isTCPProtocol()){
-                sport = ntohs(frame->getCPacket()->getTCPHeader()->source);
-                dport = ntohs(frame->getCPacket()->getTCPHeader()->dest);
-            } else if(frame->getCPacket()->isUDPProtocol()){
-                sport = ntohs(frame->getCPacket()->getUDPHeader()->source);
-                dport = ntohs(frame->getCPacket()->getUDPHeader()->dest);
-            }
+        if(frame->getCPacket()->isTCPProtocol()){
+            sport = ntohs(frame->getCPacket()->getTCPHeader()->source);
+            dport = ntohs(frame->getCPacket()->getTCPHeader()->dest);
+        } else if(frame->getCPacket()->isUDPProtocol()){
+            sport = ntohs(frame->getCPacket()->getUDPHeader()->source);
+            dport = ntohs(frame->getCPacket()->getUDPHeader()->dest);
         }
+
+        if(src != nullptr && strlen(src) > 0){
+            std::string src_ip = std::string("IP Source: ") + std::string(src);
+            ui->packetSource->setText(src_ip.c_str());
+        }
+        if(dst != nullptr && strlen(dst) > 0){
+            std::string dst_ip = std::string("IP Destination: ") + std::string(dst);
+            ui->packetDestination->setText(dst_ip.c_str());
+        }
+
+        if(sport > 0){
+            std::string src_port = std::string("Port Destination: ") + std::to_string(sport);
+            ui->packetPortSource->setText(src_port.c_str());
+        }
+        if(dport > 0){
+            std::string dst_port = std::string("Port Source: ") + std::to_string(dport);
+            ui->packetPortDestination->setText(dst_port.c_str());
+        }
+
+        packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
+        ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
     } else if(frame->isIPv6Protocol()){
-        src = inet_ntoa(*(in_addr*)(&frame->getIPv6Header()->saddr));
-        dst = inet_ntoa(*(in_addr*)(&frame->getIPv6Header()->daddr));
-    }
+        char src[INET6_ADDRSTRLEN];
+        char dst[INET6_ADDRSTRLEN];
 
-    if(src != nullptr && strlen(src) > 0){
-        std::string src_ip = std::string("IP Source: ") + std::string(src);
-        ui->packetSource->setText(src_ip.c_str());
-    }
-    if(dst != nullptr && strlen(dst) > 0){
-        std::string dst_ip = std::string("IP Destination: ") + std::string(dst);
-        ui->packetDestination->setText(dst_ip.c_str());
-    }
+        inet_ntop(AF_INET6, &frame->getIPv6Header()->saddr, src, INET6_ADDRSTRLEN);
+        inet_ntop(AF_INET6, &frame->getIPv6Header()->saddr, dst, INET6_ADDRSTRLEN);
 
-    if(sport > 0){
-        std::string src_port = std::string("Port Destination: ") + std::to_string(sport);
-        ui->packetPortSource->setText(src_port.c_str());
-    }
-    if(dport > 0){
-        std::string dst_port = std::string("Port Source: ") + std::to_string(dport);
-        ui->packetPortDestination->setText(dst_port.c_str());
+        if(src != nullptr && strlen(src) > 0){
+            std::string src_ip = std::string("IP Source: ") + std::string(src);
+            ui->packetSource->setText(src_ip.c_str());
+        }
+        if(dst != nullptr && strlen(dst) > 0){
+            std::string dst_ip = std::string("IP Destination: ") + std::string(dst);
+            ui->packetDestination->setText(dst_ip.c_str());
+        }
+
+        if(sport > 0){
+            std::string src_port = std::string("Port Destination: ") + std::to_string(sport);
+            ui->packetPortSource->setText(src_port.c_str());
+        }
+        if(dport > 0){
+            std::string dst_port = std::string("Port Source: ") + std::to_string(dport);
+            ui->packetPortDestination->setText(dst_port.c_str());
+        }
+
+        packet = reinterpret_cast<const unsigned char *>(frame->getEthernetFrame());
+        ui->packetContentAnalysisRaw->document()->setPlainText(this->bufferToStringPrettyfier(packet, frame->getTotalLen()).c_str());
+    }  else if(frame->isARPProtocol()){
+        std::string arpContent;
+        struct arphdr *arp_hdr = frame->getARPHeader();
+
+        arpContent.append(std::string("Protocol Type: ") + std::to_string(arp_hdr->ar_pro));
+        arpContent.append("\n");
+        arpContent.append(std::string("Operation: ") + std::to_string(arp_hdr->ar_op));
+        arpContent.append("\n");
+
+        ui->packetContentAnalysisRaw->document()->setPlainText(arpContent.c_str());
     }
 }
 
