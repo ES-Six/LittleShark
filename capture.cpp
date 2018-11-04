@@ -301,6 +301,7 @@ void Capture::onListItemClicked(QListWidgetItem *item) {
     ui->packetDestination->setText("IP Destination:");
     ui->packetPortSource->setText("Port Destination: ");
     ui->packetPortDestination->setText("Port Source: ");
+    ui->packetContentAnalyzed->document()->setPlainText("");
 
     uint16_t sport = 0;
     uint16_t dport = 0;
